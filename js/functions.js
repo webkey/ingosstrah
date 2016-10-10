@@ -696,8 +696,11 @@ function preloadPage(){
 
 			if (current.siblings(collapsibleElement).is(':visible')){
 				currentAccordionItem.removeClass(modifiers.active).find(collapsibleElement).slideUp(animateSpeed);
-				currentAccordionItem.removeClass(modifiers.current);
-				currentAccordionItem.find(anyAccordionItem).removeClass(modifiers.active).removeClass(modifiers.current);
+				// currentAccordionItem.removeClass(modifiers.current);
+				currentAccordionItem
+					.find(anyAccordionItem)
+					.removeClass(modifiers.active);
+					// .removeClass(modifiers.current);
 				return;
 			}
 
@@ -705,12 +708,18 @@ function preloadPage(){
 			if (self._collapsibleAll){
 				var siblingContainers = $(accordionContainer).not(current.closest(accordionContainer));
 				siblingContainers.find(collapsibleElement).slideUp(animateSpeed);
-				siblingContainers.find(anyAccordionItem).removeClass(modifiers.active).removeClass(modifiers.current);
+				siblingContainers
+					.find(anyAccordionItem)
+					.removeClass(modifiers.active);
+					// .removeClass(modifiers.current);
 			}
 
 			currentAccordionItem.siblings().removeClass(modifiers.active).find(collapsibleElement).slideUp(animateSpeed);
-			currentAccordionItem.siblings().removeClass(modifiers.current);
-			currentAccordionItem.siblings().find(anyAccordionItem).removeClass(modifiers.active).removeClass(modifiers.current);
+			// currentAccordionItem.siblings().removeClass(modifiers.current);
+			currentAccordionItem.siblings()
+				.find(anyAccordionItem)
+				.removeClass(modifiers.active);
+				// .removeClass(modifiers.current);
 
 			currentAccordionItem.addClass(modifiers.active);
 			current.siblings(collapsibleElement).slideDown(animateSpeed);
@@ -733,6 +742,27 @@ function menuAccordionInit() {
 }
 /*multi accordion end*/
 
+/**!
+ * drop language
+ * */
+function languageEvents() {
+	$('.js-lang-open').on('click', function (e) {
+		e.preventDefault();
+		$(this).closest('.lang').toggleClass('lang-opened');
+		e.stopPropagation();
+	});
+	$('.lang-list').on('click', function (e) {
+		e.stopPropagation();
+	});
+	$(document).on('click', function () {
+		closeDropLong();
+	});
+	function closeDropLong() {
+		$('.lang').removeClass('lang-opened');
+	}
+}
+/*drop language end*/
+
 /** ready/load/resize document **/
 
 $(window).load(function () {
@@ -751,6 +781,7 @@ $(document).ready(function(){
 	slidersInit();
 	popupInitial();
 	menuAccordionInit();
+	languageEvents();
 
 	footerBottom();
 });

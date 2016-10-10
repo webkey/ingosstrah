@@ -47,10 +47,14 @@
 						<a href="#search-popup" class="popup-with-form"></a>
 					</li>
 					<li class="lang">
-						<a href="#">
+						<a href="#" class="js-lang-open">
 							<span>Ru</span>
-							<!--<i class="icon-angle-down"></i>-->
+							<i class="icon-angle-down"></i>
 						</a>
+						<ul class="lang-list">
+							<li><a href="#"><span>Be</span></a></li>
+							<li><a href="#"><span>En</span></a></li>
+						</ul>
 					</li>
 					<li class="login">
 						<a href="#login-form" class="popup-with-form">
@@ -200,13 +204,14 @@
 			<!--SIDEBAR-->
 			<aside class="sidebar">
 				<div class="sidebar-holder">
+					<!--menu-->
 					<div class="menu">
 						<ul class="menu__list">
 							<li class="has-drop active">
 								<a href="#"><span>Акции</span><i class="icon-angle-down"></i></a>
 								<div class="menu-drop" style="display: block;">
 									<ul class="menu-drop__list">
-										<li><a href="#"><span>Специальные условия по каско</span></a></li>
+										<li class="current"><a href="#"><span>Специальные условия по каско</span></a></li>
 										<li><a href="#"><span>Страхование имущества в один клик</span></a></li>
 										<li><a href="#"><span>Оптимальное КАСКО</span></a></li>
 									</ul>
@@ -258,6 +263,19 @@
 							</li>
 						</ul>
 					</div>
+					<!--menu end-->
+
+					<!--sidebar widgets-->
+					<div class="sidebar-widgets">
+						<section class="sidebar-widget widget-news">
+							<strong class="sidebar-widget__title">Новости</strong>
+							<article class="sidebar-widget__item">
+								<div class="sidebar-widget__text"><a href="#">ЗСАО "Ингосстрах" присвоен рейтинг А</a></div>
+								<div class="sidebar-widget__date">12 сентября 2016</div>
+							</article>
+						</section>
+					</div>
+					<!--sidebar widgets end-->
 				</div>
 			</aside>
 			<!--SIDEBAR-->
@@ -265,7 +283,17 @@
 			<!--ASIDE-->
 			<aside class="aside">
 				<div class="aside-holder">
-					aside holder
+					<!--sidebar widgets-->
+					<div class="sidebar-widgets">
+						<section class="sidebar-widget widget-news">
+							<strong class="sidebar-widget__title">Новости</strong>
+							<article class="sidebar-widget__item">
+								<div class="sidebar-widget__text"><a href="#">ЗСАО "Ингосстрах" присвоен рейтинг А</a></div>
+								<div class="sidebar-widget__date">12 сентября 2016</div>
+							</article>
+						</section>
+					</div>
+					<!--sidebar widgets end-->
 				</div>
 			</aside>
 			<!--ASIDE end-->
