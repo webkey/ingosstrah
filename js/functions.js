@@ -432,17 +432,49 @@ function slidersInit() {
 		$commonSliders.each(function() {
 			var $currentSlider = $(this);
 
-			$currentSlider.slick({
+			$currentSlider.on('init', function () {
+
+				// recalculation position sticky elements
+				$('.sidebar').trigger("sticky_kit:recalc");
+				$('.aside').trigger("sticky_kit:recalc");
+
+			}).slick({
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				infinite: true,
-				// autoplay: true,
-				// autoplaySpeed: 8000,
+				autoplay: true,
+				autoplaySpeed: 8000,
+				adaptiveHeight: true,
 				dots: false,
 				arrows: false,
 				fade: true,
+				focusOnSelect: true,
+				// pauseOnHover: true,
+				touchMove: false,
+				draggable: false,
+				accessibility: false,
 				swipe: false
+			}).on('afterChange', function () {
+
+				// recalculation position sticky elements
+				$('.sidebar').trigger("sticky_kit:recalc");
+				$('.aside').trigger("sticky_kit:recalc");
+
 			});
+
+			// common slider's navigation
+			$('.js-common-slider-nav').on('click', 'a', function(e){
+
+				e.preventDefault();
+				var index = $(this).attr('data-slide');
+				console.log("index: ", index);
+				$currentSlider.slick('slickGoTo', index);
+			});
+
+			// toggle class current slide on nav
+			function addCurrentClass(index) {
+				$('.js-common-slider-nav')
+			};
 		});
 	}
 }
@@ -757,7 +789,7 @@ function stickyLayout(){
 
 	$('.menu__list').on('accordionChange', function () {
 		$sidebar.trigger("sticky_kit:recalc");
-	})
+	});
 }
 /*sticky layout end*/
 
