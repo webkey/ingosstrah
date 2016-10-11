@@ -8,7 +8,7 @@
  TweetMax VERSION: 1.19.0;
  Slick Slider v. 1.6.0;
  Magnific Popup - v1.1.0 - 2016-02-20;
- Sticky-kit v1.1.2
+ Sticky-kit v1.1.2;
  */
 
 /**

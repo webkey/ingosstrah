@@ -20,7 +20,7 @@
 	<!--Modernizr-->
 	<script src="js/vendor/modernizr-3.3.1.custom.min.js"></script>
 </head>
-<body>
+<body class="home-page">
 <!--[if lt IE 9]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -93,9 +93,9 @@
 			<div class="main-holder">
 				<!--CONTENT-->
 				<div class="content-wrap">
-					<div class="content layout user-content">
+					<div class="content layout user-content js-pages-container">
 						<!--common-->
-						<div class="common">
+						<div class="page-item page-item-no-space js-pages-content" data-id="page-common">
 							<!--common slider-->
 							<div class="common-slider">
 								<article class="common-page">
@@ -145,11 +145,11 @@
 										</div>
 									</section>
 								</article>
-								<div class="common-page">
+								<article class="common-page">
 									<!--visual-->
 									<div class="visual" style="background-image: url(img/img-common-02.jpg);">
 										<div class="visual__holder">
-											<h2 class="visual__text">Идеальное решение для защиты своего автомобиля от ДТП</h2>
+											<h2 class="visual__text">Страхование имущества в один клик</h2>
 											<div class="visual__footer">
 												<a href="#" class="btn-frame-alt">Узнать подробнее</a>
 											</div>
@@ -161,69 +161,42 @@
 											<div class="section-title">
 												<h3>Взаимодействие с государственными и общественными организациями жизни и здоровья если Вы купили полис в</h3>
 											</div>
-											<p>Наличие автомобиля в современном мире – уже не роскошь, и даже не просто средство передвижения. Это насущная необходимость и средство достижения успеха в жизни, в бизнесе. И, несомненно, риск. Полис ЗСАО «Ингосстрах» является универсальным финансовым инструментом для сохранения имущественных интересов наших клиентов, удовлетворяет запросы практически всех категорий автовладельцев.</p>
-											<div class="form-wrap callback-form">
-												<form action="#" method="get">
-													<strong class="form__title">Форма обратной связи</strong>
-													<div class="input-wrap">
-														<div class="label-holder">
-															<label for="callback-form__name-field">Имя*</label>
+											<!--graphs-->
+											<div class="graphs">
+												<div class="graph">
+													<div class="graph-inner">
+														<div class="graph-progress" style="background-image: url(img/temp-img-prog-01.png);">
+															<div class="graph-count"><span class="large-text">70</span> %</div>
 														</div>
-														<div class="input-holder">
-															<input type="text" id="callback-form__name-field" />
-														</div>
+														<div class="graph-text">страховых выплат от взносов</div>
 													</div>
-													<div class="input-wrap">
-														<div class="label-holder">
-															<label for="callback-form__phone-field">Контактный телефон*</label>
+												</div>
+												<div class="graph">
+													<div class="graph-inner">
+														<div class="graph-progress" style="background-image: url(img/temp-img-prog-02.png);">
+															<div class="graph-count">&gt; <span class="large-text">90</span> %</div>
 														</div>
-														<div class="input-holder">
-															<input type="text" id="callback-form__phone-field" />
-														</div>
+														<div class="graph-text">выплат по КАСКО</div>
 													</div>
-													<div class="input-wrap">
-														<div class="label-holder">
-															<label for="callback-form__phone-field_error">Контактный телефон* (невалидное поле)</label>
+												</div>
+												<div class="graph">
+													<div class="graph-inner">
+														<div class="graph-progress" style="background-image: url(img/temp-img-prog-03.png);">
+															<div class="graph-count">рейтинг <span class="large-text">A</span></div>
 														</div>
-														<div class="input-holder">
-															<input class="error" type="text" id="callback-form__phone-field_error" />
-															<span class="error-note">Поле обязательное для заполнения</span>
-														</div>
+														<div class="graph-text">Высший рейтинг надежности</div>
 													</div>
-													<div class="input-wrap">
-														<div class="label-holder">
-															<label for="callback-form__firm-field">Организация*</label>
-														</div>
-														<div class="input-holder">
-															<input type="text" id="callback-form__firm-field" value="Астроним" />
-														</div>
-													</div>
-													<div class="input-wrap">
-														<div class="label-holder">
-															<label for="callback-form__comment-field">Комментарий</label>
-														</div>
-														<div class="input-holder">
-															<textarea id="callback-form__comment-field"></textarea>
-														</div>
-													</div>
-													<div class="form-footer">
-														<div class="form-buttons">
-															<input class="btn-default" type="submit" value="Отправить">
-														</div>
-														<div class="form-note">
-															<div class="form-note__item">* Поля обязательные для заполнения</div>
-														</div>
-													</div>
-												</form>
+												</div>
 											</div>
+											<!--graphs end-->
 										</div>
 									</section>
-								</div>
-								<div class="common-page">
+								</article>
+								<article class="common-page">
 									<!--visual-->
 									<div class="visual" style="background-image: url(img/img-common-03.jpg);">
 										<div class="visual__holder">
-											<h2 class="visual__text">Идеальное решение для защиты своего автомобиля от ДТП</h2>
+											<h2 class="visual__text">Оптимальное КАСКО</h2>
 											<div class="visual__footer">
 												<a href="#" class="btn-frame-alt">Узнать подробнее</a>
 											</div>
@@ -235,15 +208,148 @@
 											<div class="section-title">
 												<h3>Наличие автомобиля в современном мире – уже не роскошь, и даже не просто средство передвижения.</h3>
 											</div>
-											<p>Наличие автомобиля в современном мире – уже не роскошь, и даже не просто средство передвижения. Это насущная необходимость и средство достижения успеха в жизни, в бизнесе. И, несомненно, риск. Полис ЗСАО «Ингосстрах» является универсальным финансовым инструментом для сохранения имущественных интересов наших клиентов, удовлетворяет запросы практически всех категорий автовладельцев.</p>
-											<p>Наличие автомобиля в современном мире – уже не роскошь, и даже не просто средство передвижения.</p>
+											<!--graphs-->
+											<div class="graphs">
+												<div class="graph">
+													<div class="graph-inner">
+														<div class="graph-progress" style="background-image: url(img/temp-img-prog-01.png);">
+															<div class="graph-count"><span class="large-text">70</span> %</div>
+														</div>
+														<div class="graph-text">страховых выплат от взносов</div>
+													</div>
+												</div>
+												<div class="graph">
+													<div class="graph-inner">
+														<div class="graph-progress" style="background-image: url(img/temp-img-prog-02.png);">
+															<div class="graph-count">&gt; <span class="large-text">90</span> %</div>
+														</div>
+														<div class="graph-text">выплат по КАСКО</div>
+													</div>
+												</div>
+												<div class="graph">
+													<div class="graph-inner">
+														<div class="graph-progress" style="background-image: url(img/temp-img-prog-03.png);">
+															<div class="graph-count">рейтинг <span class="large-text">A</span></div>
+														</div>
+														<div class="graph-text">Высший рейтинг надежности</div>
+													</div>
+												</div>
+											</div>
+											<!--graphs end-->
 										</div>
 									</section>
-								</div>
+								</article>
 							</div>
 							<!--common slider end-->
 						</div>
 						<!--common end-->
+						<div class="page-item js-pages-content" data-id="page-physical">
+							<section class="section">
+								<div class="max-wrap-md">
+									<div class="section-title">
+										<h3>Виды страхования</h3>
+									</div>
+									<!--catalog-->
+									<div class="catalog-wrap">
+										<div class="catalog">
+											<div class="catalog-item">
+												<a href="inner.html" class="catalog-item__inner">
+													<div class="catalog-item__icon" style="background-image: url(img/depict-catalog-01.png);"></div>
+													<div class="catalog-item__title">Авто</div>
+													<div class="catalog-item__text">Защита авто</div>
+												</a>
+											</div>
+											<div class="catalog-item">
+												<a href="inner.html" class="catalog-item__inner">
+													<div class="catalog-item__icon" style="background-image: url(img/depict-catalog-02.png);"></div>
+													<div class="catalog-item__title">Поездки</div>
+													<div class="catalog-item__text">Приветствуем Вас на сайте страховой</div>
+												</a>
+											</div>
+											<div class="catalog-item">
+												<a href="inner.html" class="catalog-item__inner">
+													<div class="catalog-item__icon" style="background-image: url(img/depict-catalog-03.png);"></div>
+													<div class="catalog-item__title">Здоровье</div>
+													<div class="catalog-item__text">Приветствуем Вас на сайте страховой</div>
+												</a>
+											</div>
+											<div class="catalog-item">
+												<a href="inner.html" class="catalog-item__inner">
+													<div class="catalog-item__icon" style="background-image: url(img/depict-catalog-04.png);"></div>
+													<div class="catalog-item__title">Имущество</div>
+													<div class="catalog-item__text">Страхование имущества</div>
+												</a>
+											</div>
+											<div class="catalog-item">
+												<a href="inner.html" class="catalog-item__inner">
+													<div class="catalog-item__icon" style="background-image: url(img/depict-catalog-05.png);"></div>
+													<div class="catalog-item__title">Ответственность</div>
+													<div class="catalog-item__text">Приветствуем Вас на сайте страховой</div>
+												</a>
+											</div>
+											<div class="catalog-item">
+												<a href="inner.html" class="catalog-item__inner">
+													<div class="catalog-item__icon" style="background-image: url(img/depict-catalog-06.png);"></div>
+													<div class="catalog-item__title">Все услуги для физических лиц</div>
+													<div class="catalog-item__text">&nbsp;</div>
+												</a>
+											</div>
+										</div>
+									</div>
+									<!--catalog end-->
+								</div>
+							</section>
+						</div>
+						<div class="page-item js-pages-content" data-id="page-legal">
+							<section class="section">
+								<div class="max-wrap-md">
+									<div class="section-title">
+										<h3>Виды страхования для Вашего бизнеса</h3>
+									</div>
+									<!--catalog-->
+									<div class="catalog-wrap">
+										<div class="catalog">
+											<div class="catalog-item">
+												<a href="inner.html" class="catalog-item__inner">
+													<div class="catalog-item__icon" style="background-image: url(img/depict-catalog-01.png);"></div>
+													<div class="catalog-item__title">Авто</div>
+													<div class="catalog-item__text">Защита авто</div>
+												</a>
+											</div>
+											<div class="catalog-item">
+												<a href="inner.html" class="catalog-item__inner">
+													<div class="catalog-item__icon" style="background-image: url(img/depict-catalog-04.png);"></div>
+													<div class="catalog-item__title">Имущество</div>
+													<div class="catalog-item__text">Страхование имущества</div>
+												</a>
+											</div>
+											<div class="catalog-item">
+												<a href="inner.html" class="catalog-item__inner">
+													<div class="catalog-item__icon" style="background-image: url(img/depict-catalog-05.png);"></div>
+													<div class="catalog-item__title">Ответственность</div>
+													<div class="catalog-item__text">Приветствуем Вас на сайте страховой</div>
+												</a>
+											</div>
+											<div class="catalog-item">
+												<a href="inner.html" class="catalog-item__inner">
+													<div class="catalog-item__icon" style="background-image: url(img/depict-catalog-07.png);"></div>
+													<div class="catalog-item__title">Персонал</div>
+													<div class="catalog-item__text">Приветствуем Вас на сайте страховой</div>
+												</a>
+											</div>
+											<div class="catalog-item">
+												<a href="inner.html" class="catalog-item__inner">
+													<div class="catalog-item__icon" style="background-image: url(img/depict-catalog-08.png);"></div>
+													<div class="catalog-item__title">Поездки</div>
+													<div class="catalog-item__text">Приветствуем Вас на сайте страховой</div>
+												</a>
+											</div>
+										</div>
+									</div>
+									<!--catalog end-->
+								</div>
+							</section>
+						</div>
 					</div>
 				</div>
 				<!--CONTENT end-->
@@ -292,27 +398,26 @@
 					<div class="menu">
 						<ul class="menu__list">
 							<li class="has-drop active">
-								<a href="#"><span>Акции</span><i class="icon-angle-right"></i></a>
+								<a href="index.html" class="js-pages-anchor" data-for="page-common"><span>Акции</span><i class="icon-angle-right"></i></a>
 								<div class="menu-drop" style="display: block;">
 									<ul class="menu-drop__list js-common-slider-nav">
-										<li class="current"><a href="#" data-slide="0"><span>Специальные условия по каско</span></a></li>
-										<li><a href="#" data-slide="1"><span>Страхование имущества в один клик</span></a></li>
-										<li><a href="#" data-slide="2"><span>Оптимальное КАСКО</span></a></li>
+										<li class="current"><a href="index.html" data-slide="0" tabindex="-1"><span>Специальные условия по каско</span></a></li>
+										<li><a href="index.html" data-slide="1" tabindex="-1"><span>Страхование имущества в один клик</span></a></li>
+										<li><a href="index.html" data-slide="2" tabindex="-1"><span>Оптимальное КАСКО</span></a></li>
 									</ul>
 								</div>
 							</li>
 							<li class="has-drop">
-								<a href="#"><span>Для вас и вашей семьи</span><i class="icon-angle-right"></i></a>
+								<a href="index.html" class="js-pages-anchor" data-for="page-physical"><span>Для вас и вашей семьи</span><i class="icon-angle-right"></i></a>
 								<div class="menu-drop">
 									<ul class="menu-drop__list">
-										<li><a href="#"><span>Авто</span></a></li>
-										<li class="has-drop">
-											<a href="#"><span>Направления деятельности</span><i class="icon-angle-right"></i></a>
-											<div class="menu-sub-drop" style="display: none;">
+										<li>
+											<a href="#"><span>Авто</span><i class="icon-angle-right"></i></a>
+											<div class="menu-sub-drop">
 												<ul class="menu-sub-drop__list">
-													<li><a href="#"><span>Страхование наземных транспортных средств граждан (АвтоКАСКО)</span></a></li>
-													<li><a href="#"><span>Страхование водителей и пассажиров от несчастных случаев</span></a></li>
-													<li><a href="#"><span>Страхование транспортных средств  от поломок</span></a></li>
+													<li><a href="inner.html"><span>Страхование наземных транспортных средств граждан (АвтоКАСКО)</span></a></li>
+													<li><a href="inner.html"><span>Страхование водителей и пассажиров от несчастных случаев</span></a></li>
+													<li><a href="inner.html"><span>Страхование транспортных средств  от поломок</span></a></li>
 												</ul>
 											</div>
 										</li>
@@ -324,24 +429,23 @@
 								</div>
 							</li>
 							<li class="has-drop">
-								<a href="#"><span>Для вашего бизнеса</span><i class="icon-angle-right"></i></a>
+								<a href="index.html" class="js-pages-anchor" data-for="page-legal"><span>Для вашего бизнеса</span><i class="icon-angle-right"></i></a>
 								<div class="menu-drop">
 									<ul class="menu-drop__list">
-										<li><a href="#"><span>Авто</span></a></li>
-										<li class="has-drop">
-											<a href="#"><span>Направления деятельности</span><i class="icon-angle-right"></i></a>
-											<div class="menu-sub-drop" style="display: none;">
+										<li>
+											<a href="#"><span>Авто</span><i class="icon-angle-right"></i></a>
+											<div class="menu-sub-drop">
 												<ul class="menu-sub-drop__list">
-													<li><a href="#"><span>Страхование наземных транспортных средств граждан (АвтоКАСКО)</span></a></li>
-													<li><a href="#"><span>Страхование водителей и пассажиров от несчастных случаев</span></a></li>
-													<li><a href="#"><span>Страхование транспортных средств  от поломок</span></a></li>
+													<li><a href="inner.html"><span>Страхование наземных транспортных средств граждан (АвтоКАСКО)</span></a></li>
+													<li><a href="inner.html"><span>Страхование водителей и пассажиров от несчастных случаев</span></a></li>
+													<li><a href="inner.html"><span>Страхование транспортных средств  от поломок</span></a></li>
 												</ul>
 											</div>
 										</li>
-										<li><a href="#"><span>Поездки</span></a></li>
-										<li><a href="#"><span>Здоровье</span></a></li>
 										<li><a href="#"><span>Имущество</span></a></li>
 										<li><a href="#"><span>Ответственность</span></a></li>
+										<li><a href="#"><span>Персонал</span></a></li>
+										<li><a href="#"><span>Поездки</span></a></li>
 									</ul>
 								</div>
 							</li>
