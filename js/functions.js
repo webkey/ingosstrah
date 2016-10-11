@@ -457,6 +457,9 @@ function commonSliderInit() {
 			}).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
 				addCurrentClass(nextSlide);
+				if( $(window).scrollTop() > 0 ) {
+					$('html,body').stop().animate({scrollTop: 0}, 330);
+				}
 
 			}).on('afterChange', function () {
 
@@ -801,6 +804,11 @@ function pagesSwitcher() {
 				toggleContent();
 				changeHeightContainer();
 				toggleActiveClass();
+
+				// scroll page to top
+				if( $(window).scrollTop() > 0 ) {
+					$('html,body').stop().animate({scrollTop: 0}, 330);
+				}
 			}
 
 			// show active content and hide other
@@ -825,7 +833,14 @@ function pagesSwitcher() {
 				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
 
 				TweenMax.to($thisContainer, animationHeightSpeed, {
-					'height': $initialContent.outerHeight()
+					'height': $initialContent.outerHeight(),
+					onComplete: function () {
+
+						// recalculation position sticky elements
+						$('.sidebar').trigger("sticky_kit:recalc");
+						$('.aside').trigger("sticky_kit:recalc");
+
+					}
 				});
 			}
 
@@ -870,6 +885,44 @@ function pagesSwitcher() {
 	}
 }
 /* tabs end */
+
+/*show form search */
+function showFormSearch() {
+	var $searchForm = $('.js-search-form');
+	if (!$searchForm.length) {
+		return;
+	}
+
+	var $body = $('body');
+	var openedFormClass = 'search-form-opened';
+
+	$searchForm.on('click', '.js-search-close', function (e) {
+		e.preventDefault();
+
+		$body.toggleClass(openedFormClass, !$body.hasClass(openedFormClass));
+
+		focusingSearchForm();
+	});
+
+	$searchForm.on('click', 'input:submit', function () {
+		if(!$body.hasClass(openedFormClass)){
+			$body.addClass(openedFormClass);
+
+			focusingSearchForm();
+
+			return false;
+		}
+	});
+
+	$searchForm.on('click', function () {
+		focusingSearchForm();
+	});
+
+	function focusingSearchForm(){
+		$searchForm.find('input[type="search"], input[type="text"]').trigger('focus');
+	}
+}
+/*show form search end*/
 
 
 /**!
@@ -978,6 +1031,8 @@ $(document).ready(function(){
 		commonSliderInit();
 		pagesSwitcher();
 	}
+	showFormSearch();
+
 
 	footerBottom();
 	stickyLayout();

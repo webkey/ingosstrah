@@ -35,7 +35,21 @@
 				<!--main navigation-->
 				<nav class="nav">
 					<ul class="nav-list">
-						<li><a href="about.html"><span>О компании</span><i class="icon-angle-down"></i></a></li>
+						<li>
+							<a href="about.html"><span>О компании</span><i class="icon-angle-down"></i></a>
+							<div class="nav-drop">
+								<ul class="nav-drop__list">
+									<li><a href="#">История компании</a></li>
+									<li><a href="#">Руководство</a></li>
+									<li><a href="#">Лицензия</a></li>
+									<li><a href="#">Партнеры</a></li>
+									<li><a href="#">Группа «ИНГО»</a></li>
+									<li><a href="#">Наши реквизиты</a></li>
+									<li><a href="#">Итоги деятельности</a></li>
+									<li><a href="#">Вакансии</a></li>
+								</ul>
+							</div>
+						</li>
 						<li><a href="contacts.html"><span>Контакты</span></a></li>
 					</ul>
 				</nav>
@@ -44,7 +58,19 @@
 				<!--user-->
 				<ul class="user">
 					<li class="show-search">
-						<a href="#search-popup" class="popup-with-form"></a>
+						<!--<a href="#search-popup" class="popup-with-form"></a>-->
+						<div class="search-form js-search-form">
+							<form action="#">
+								<div class="btn-search js-search-open">
+									<i class="btn-search-icon"></i>
+									<input type="submit" value="" title="Поиск">
+								</div>
+								<div class="input-wrapper">
+									<input type="search" placeholder="Поиск по сайту" class="ui-autocomplete-input" autocomplete="off">
+								</div>
+								<a href="#" class="btn-search-close js-search-close" title="Закрыть">Закрыть</a>
+							</form>
+						</div>
 					</li>
 					<li class="lang">
 						<a href="#" class="js-lang-open">
@@ -584,23 +610,6 @@
 </footer>
 <!--footer end-->
 
-<!--search popup-->
-<div id="search-popup" class="mfp-hide inline-popup">
-	<div class="popup-form search-form">
-		<div class="max-wrap-md">
-			<form action="#" method="get">
-				<strong class="inline-popup__title">Поиск по сайту</strong>
-				<div class="input-wrap">
-					<input type="search" placeholder="Поиск">
-					<div class="btn-search">
-						<i class="icon-magnifier"></i>
-						<input type="submit" value="">
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
 <!--call popup-->
 <div id="call-popup" class="mfp-hide inline-popup inline-popup_narrow">
 	<div class="popup-form">
@@ -703,7 +712,7 @@
 					<div class="form-note__item form-mark">* Поля обязательные для заполнения</div>
 				</div>
 				<div class="form-buttons align-center">
-					<input type="submit" value="Регистрация">
+					<input class="btn-default" type="submit" value="Регистрация">
 				</div>
 			</form>
 		</div>
