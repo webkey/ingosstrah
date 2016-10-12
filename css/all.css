@@ -1347,9 +1347,14 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	background: #fff;
 	padding: 13px 0;
 	border-top: 1px solid #ccc;
+	overflow: hidden;
 }
 .inline-form__text-item{
 	padding: 4px 0;
+	float: right;
+}
+.inline-form__text-item:first-child{
+	float: left;
 }
 .inline-form__text-item a{
 	color: #124989;
@@ -2349,7 +2354,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	margin: 0 -1px 60px;
 }
 .inline-popup_narrow .input-wrap{
-	max-width: 270px;
+	max-width: 290px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -2363,6 +2368,13 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	display: block;
 }
 .popup-form h3{ padding-bottom: 21px; }
+.label-holder,
+label,
+.label-form {
+	font-size: 16px;
+	line-height: 21px;
+	color: #666;
+}
 .popup-form textarea{
 	height: 99px;
 	max-height: 99px;
