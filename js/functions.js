@@ -457,9 +457,9 @@ function commonSliderInit() {
 			}).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
 				addCurrentClass(nextSlide);
-				if( $(window).scrollTop() > 0 ) {
-					$('html,body').stop().animate({scrollTop: 0}, 330);
-				}
+				// if( $(window).scrollTop() > 0 ) {
+				// 	$('html,body').stop().animate({scrollTop: 0}, 330);
+				// }
 
 			}).on('afterChange', function () {
 
@@ -924,6 +924,24 @@ function showFormSearch() {
 }
 /*show form search end*/
 
+/**!
+ * equal height
+ * */
+function equalHeightInit() {
+	$(window).load(function () {
+		// gallery list
+		var $catalog = $('.catalog');
+		if ($catalog.length) {
+			$('.catalog-item__inner', $catalog).equalHeight({
+				useParent: true,
+				parent: $catalog,
+				resize: true
+			});
+		}
+	})
+}
+/*equal height end*/
+
 
 /**!
  * footer at bottom
@@ -1033,9 +1051,9 @@ $(document).ready(function(){
 	}
 	showFormSearch();
 
-
 	footerBottom();
 	stickyLayout();
+	equalHeightInit();
 
 	// var loc = window.location;
 	// console.log("loc: ", loc.hash.substring(1));

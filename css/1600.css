@@ -1,0 +1,20 @@
+@media only screen and (max-width: 1599px){}
+
+.catalog-item__title{
+	font-size: 22px;
+}
+
+
+.section-title h3 {
+	font-size: 30px;
+	line-height: 40px;
+}
+
+
+
+.footer-nav__list,
+.user-content .footer-nav__list,
+.footer-nav__title{
+	font-size: 16px;
+	line-height: 21px;
+}
