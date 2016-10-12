@@ -820,11 +820,11 @@ function commonSliderInit() {
 		$commonSliders.each(function() {
 			var $currentSlider = $(this);
 
-			$currentSlider.on('init', function () {
+			$currentSlider.on('init', function (event, slick) {
 
 				// recalculation position sticky elements
-				$('.sidebar').trigger("sticky_kit:recalc");
-				$('.aside').trigger("sticky_kit:recalc");
+				// $('.sidebar').trigger("sticky_kit:recalc");
+				// $('.aside').trigger("sticky_kit:recalc");
 
 			}).slick({
 				slidesToShow: 1,
@@ -832,7 +832,6 @@ function commonSliderInit() {
 				infinite: true,
 				// autoplay: true,
 				// autoplaySpeed: 8000,
-				adaptiveHeight: true,
 				dots: false,
 				arrows: false,
 				fade: true,
@@ -845,17 +844,6 @@ function commonSliderInit() {
 			}).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
 				addCurrentClass(nextSlide);
-				// if( $(window).scrollTop() > 0 ) {
-				// 	$('html,body').stop().animate({scrollTop: 0}, 330);
-				// }
-
-			}).on('afterChange', function () {
-
-				// recalculation position sticky elements
-				$('.sidebar').trigger("sticky_kit:recalc");
-				$('.aside').trigger("sticky_kit:recalc");
-
-				$('.js-pages-container').trigger('pagesChangeHeight');
 
 			});
 
@@ -877,10 +865,10 @@ function commonSliderInit() {
 			// toggle class current slide on nav
 			function addCurrentClass(index) {
 
-				$sliderNav.find('a').parent().removeClass('current');
+				$sliderNav.find('li').removeClass('current');
 				$sliderNav.find('a[data-slide="'+index+'"]').parent().addClass('current');
 
-			};
+			}
 		});
 	}
 }
@@ -894,19 +882,12 @@ function scrollToSection() {
 
 		/* Page Scroll to id fn call */
 		$(".menu__list a").mPageScroll2id({
-			highlightSelector: '.menu__list >li> a',
+			highlightSelector: '.menu__list > li > a',
 			scrollSpeed: 700,
 			highlightClass: 'current',
-			offset: $('header').outerHeight(),
-			onComplete:function(){
-				myCustomFn2();
-			}
-			// clickEvents:false
+			offset: '.header',
+			forceSingleHighlight:true
 		});
-
-		function myCustomFn2(){
-			console.log(mPS2id.target.attr("id"));
-		}
 	});
 }
 /*scroll to section end*/
@@ -1046,9 +1027,9 @@ function stickyLayout(){
 		});
 	}
 
-	$('.menu__list').on('accordionChange', function () {
-		$sidebar.trigger("sticky_kit:recalc");
-	});
+	// $('.menu__list').on('accordionChange', function () {
+	// 	$sidebar.trigger("sticky_kit:recalc");
+	// });
 }
 /*sticky layout end*/
 
@@ -1078,7 +1059,7 @@ $(document).ready(function(){
 	showFormSearch();
 
 	footerBottom();
-	// stickyLayout();
+	stickyLayout();
 	equalHeightInit();
 
 	// var loc = window.location;

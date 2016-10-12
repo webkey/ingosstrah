@@ -108,6 +108,8 @@ button{
 	-webkit-transition: -webkit-transform 0.3s;
 	transition: transform 0.3s;
 	box-sizing: border-box;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 .btn-widget:hover{
 	-webkit-transform: scale(0.9, 0.9);

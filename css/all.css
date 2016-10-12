@@ -2622,12 +2622,6 @@ a.catalog-item__inner{
 .sidebar{
 	float: left;
 	margin: 0 0 0 -100%;
-
-
-	position: fixed;
-	left: 0;
-	top: 75px;
-	margin: 0;
 }
 .sidebar.is_stuck{
 	margin: 0;
@@ -2670,14 +2664,12 @@ a.catalog-item__inner{
 .menu__list li>a{
 	display: block;
 	position: relative;
-	padding: 13px 12px 13px 30px;
+	padding: 17px 12px 17px 30px;
 	font-size: 16px;
 	line-height: 20px;
 	color: #fff;
 	text-decoration: none;
 	background: #124989;
-	-webkit-transition: color 0.3s, background 0.3s;
-	transition: color 0.3s, background 0.3s;
 }
 .menu__list li.has-drop>a{
 	padding-right: 50px;
@@ -2765,10 +2757,11 @@ li.has-drop.current>.menu-sub-drop:after,
 	font-size: 14px;
 	line-height: 20px;
 	text-transform: uppercase;
+	padding: 19px 12px 19px 30px;
 }
-.desktop .menu__list >li>a:hover,
+.menu__list >li>a:hover,
 .menu__list >li.active>a,
-.menu__list >li>a.current-first{
+.menu__list >li>a.current{
 	color: #fff;
 	background: #2a5c95;
 }
@@ -2824,7 +2817,7 @@ li.has-drop.current>.menu-sub-drop:after,
 }
 .menu-sub-drop__list>li>a{
 	position: relative;
-	padding: 7px 50px 7px 48px;
+	padding: 10px 50px 12px 48px;
 	font-size: 14px;
 	line-height: 18px;
 	color: #7192b8;
@@ -2835,7 +2828,7 @@ li.has-drop.current>.menu-sub-drop:after,
 	position: absolute;
 	right: 100%;
 	margin-right: -44px;
-	top: 15px;
+	top: 18px;
 	height: 0;
 	width: 14px;
 	border-top: 1px solid #7192b8;
@@ -2883,6 +2876,8 @@ li.has-drop.current>.menu-sub-drop:after,
 	transition-property: transform, box-shadow;
 	-webkit-transition-duration: 0.3s;
 	transition-duration: 0.3s;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 .desktop .sidebar-widget a:hover,
 .desktop .sidebar-widget a:focus{
@@ -2925,7 +2920,7 @@ li.has-drop.current>.menu-sub-drop:after,
 }
 .aside-holder{
 	position: relative;
-	padding: 40px 20px 0;
+	padding: 20px 20px 0;
 }
 .aside-holder:before{
 	content: '';
@@ -2947,7 +2942,7 @@ li.has-drop.current>.menu-sub-drop:after,
 	text-decoration: none;
 	color: #000;
 	background: #fff;
-	padding: 26px 30px 30px;
+	padding: 24px 30px 28px;
 }
 a.aside-widget__inner{
 	position: relative;
@@ -2956,6 +2951,8 @@ a.aside-widget__inner{
 	transition-property: transform, box-shadow;
 	-webkit-transition-duration: 0.3s;
 	transition-duration: 0.3s;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
 }
 .desktop a.aside-widget__inner:hover{
 	box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
