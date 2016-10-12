@@ -2393,16 +2393,6 @@ label,
 	padding-top: 0;
 }
 
-.js-pages-container{
-	overflow: hidden;
-	white-space: nowrap;
-}
-.js-pages-content{
-	display: inline-block;
-	white-space: normal;
-	width: 100%;
-}
-
 .section{
 	padding: 0 0 30px;
 }
@@ -2632,6 +2622,12 @@ a.catalog-item__inner{
 .sidebar{
 	float: left;
 	margin: 0 0 0 -100%;
+
+
+	position: fixed;
+	left: 0;
+	top: 75px;
+	margin: 0;
 }
 .sidebar.is_stuck{
 	margin: 0;
@@ -2772,7 +2768,7 @@ li.has-drop.current>.menu-sub-drop:after,
 }
 .desktop .menu__list >li>a:hover,
 .menu__list >li.active>a,
-.menu__list >li.current>a{
+.menu__list >li>a.current-first{
 	color: #fff;
 	background: #2a5c95;
 }
