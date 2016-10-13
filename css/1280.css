@@ -1,2 +1,271 @@
 @media only screen and (max-width: 1279px){}
 
+/*------ TYPOGRAPHIC STYLES ------*/
+/*------ TYPOGRAPHIC STYLES end ------*/
+
+/*MAIN BLOCKS*/
+.wrapper > .max-wrap:before{
+	content: none;
+}
+.wrapper > .max-wrap:after {
+	left: 0;
+	box-shadow: none;
+}
+.sidebar{
+	top: 80px;
+}
+.layout {
+	margin-left: 0;
+}
+/*MAIN BLOCKS end*/
+
+/*USER CONTENT*/
+
+/*list*/
+/*list end*/
+
+/*default table*/
+/*default table end*/
+
+/*table styling*/
+/*table styling end*/
+
+/*blockquote*/
+/*blockquote end*/
+
+/*elements form style*/
+/*form common*/
+/*form common end*/
+
+/*placeholder style*/
+/*placeholder style end*/
+
+/*placeholder hidden*/
+/*placeholder hidden end*/
+
+/*form focus*/
+/*form focus end*/
+
+/*form error*/
+/*form error end*/
+
+/*checkbox*/
+/*checkbox end*/
+
+/*radio*/
+/*radio end*/
+
+/*input file*/
+/*input file end*/
+
+/*form layout*/
+/*form layout end*/
+
+/*select*/
+/*select overall*/
+/*select overall end*/
+
+/*multiselect button*/
+/*multiselect button end*/
+
+/*multiselect menu*/
+/*multiselect menu end*/
+/*select end*/
+
+/*elements form style end*/
+
+/*download files items*/
+/*download files items end*/
+
+/*social networks*/
+/*social networks end*/
+/*USER CONTENT end*/
+
+/*inline popup*/
+/*inline popup end*/
+
+/*default form*/
+/*default form end*/
+
+/*callback form*/
+/*callback form end*/
+
+/*login form*/
+/*login form end*/
+
+/*slider*/
+/*slider end*/
+
+/*HEADER*/
+.header{ }
+/*logo*/
+.logo{
+	width: 240px;
+}
+/*logo end*/
+
+/*main navigation*/
+.header .nav{
+	display: none;
+}
+/*main navigation end*/
+
+/*user*/
+.user{ }
+
+/*search form*/
+.show-search{ }
+
+/*search btn submit*/
+/*search btn submit end*/
+
+/*search form opener*/
+/*search form opener end*/
+
+.lang{ }
+
+.login a{
+	padding: 0;
+	width: 78px;
+	position: relative;
+}
+.login a:before{
+	content: none;
+}
+.login span{
+	display: none;
+}
+.login .depict-lock{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -10px 0 0 -9px;
+	vertical-align: top;
+	background: url(../img/depict-lock-lg.png) 0 0;
+	-webkit-background-size: auto;
+	background-size: auto;
+	width: 17px;
+	height: 20px;
+	right: auto;
+}
+/*user end*/
+
+/*call*/
+.call{ }
+/*call end*/
+
+/*button menu*/
+.btn-menu{
+	display: block;
+}
+/*button menu end*/
+/*HEADER end*/
+
+/*MAIN*/
+.main{}
+/*CONTENT*/
+/*breadcrumbs*/
+/*breadcrumbs end*/
+
+/*datetime*/
+/*datetime */
+
+/*common slider*/
+/*common slider end*/
+
+/*visual*/
+/*visual end*/
+
+/*graphs*/
+/*graphs end*/
+
+/*catalog*/
+/*catalog end*/
+/*CONTENT end*/
+
+/*SIDEBAR*/
+.sidebar{
+	position: fixed;
+	left: 0;
+	/*height: MAIN BLOCKS*/
+	bottom: 0;
+	width: 100%;
+	float: none;
+	margin: 0;
+	padding: 0;
+	display: none;
+	overflow: hidden;
+	background: #fff;
+	z-index: 1;
+}
+.sidebar:before{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 320px;
+	background: #124989;
+	box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1);
+}
+.sidebar-frame{
+	height: 100%;
+	overflow: auto;
+}
+.sidebar-frame:after{
+	content: none;
+}
+.sidebar-holder{
+	width: 320px;
+	float: left;
+}
+.sidebar-content{
+	display: block;
+}
+/*menu*/
+/*general styles menu*/
+/*shadow inside open drop*/
+/*shadow inside open drop end*/
+/*general styles menu end*/
+
+/*styles to menu level 1*/
+/*styles to menu level 1 end*/
+
+/*styles to menu level 2*/
+/*styles to menu level 2 end*/
+
+/*styles to menu level 3*/
+/*styles to menu level 3 end*/
+/*menu end*/
+
+/*sidebar widgets*/
+/*sidebar widgets end*/
+/*SIDEBAR end*/
+
+/*ASIDE*/
+.aside{}
+
+/*aside widgets*/
+/*aside widgets end*/
+/*ASIDE end*/
+/*MAIN end*/
+
+/*FOOTER*/
+.footer{}
+/*footer holder*/
+
+/*footer common*/
+/*footer nav*/
+/*footer nav end*/
+
+/*footer adr*/
+/*footer adr end*/
+/*footer common end*/
+
+/*footer bottom*/
+
+/*developer*/
+/*developer end*/
+/*footer bottom end*/
+/*footer holder end*/
+/*FOOTER end*/

@@ -15,6 +15,14 @@ $(window).resize(function () {
 /*resize only width end*/
 
 /**!
+ * preloader
+ * */
+function preloadPage(){
+	$('html').addClass('page-loaded');
+}
+/*preloader end*/
+
+/**!
  * device detected
  * */
 var DESKTOP = device.desktop();
@@ -32,6 +40,17 @@ function placeholderInit(){
 	$('[placeholder]').placeholder();
 }
 /*placeholder end*/
+
+/**!
+ * print
+ * */
+function printShow() {
+	$('.view-print').on('click', function (e) {
+		e.preventDefault();
+		window.print();
+	})
+}
+/*print end*/
 
 /**!
  *  multiselect init
@@ -137,17 +156,6 @@ function selectResize(){
 /* multiselect init end */
 
 /**!
- * print
- * */
-function printShow() {
-	$('.view-print').on('click', function (e) {
-		e.preventDefault();
-		window.print();
-	})
-}
-/*print end*/
-
-/**!
  * main navigation
  * */
 (function ($) {
@@ -161,9 +169,8 @@ function printShow() {
 			navContainer: null,
 			navMenu: '.nav-list',
 			btnMenu: '.btn-menu',
-			navMenuItem: '.nav-list > li',
+			navMenuItem: null,
 			navMenuAnchor: 'a',
-			navDropMenu: '.js-nav-drop',
 			staggerItems: null,
 			overlayClass: '.nav-overlay',
 			overlayAppend: 'body',
@@ -186,8 +193,7 @@ function printShow() {
 		self.$btnMenu = $(options.btnMenu);                        // Кнопка открытия/закрытия меню для моб. верси;
 		self.$navContainer = container;
 		self.$navMenuItem = $(options.navMenuItem, container);     // Пункты навигации;
-		self.$navMenuAnchor = $(options.navMenuAnchor, container); // Элемент, по которому производится событие (клик);
-		self.$navDropMenu = $(options.navDropMenu, container);     // Дроп-меню всех уровней;
+		self.$navMenuAnchor = $(options.navMenuAnchor, self.$navMenuItem); // Элемент, по которому производится событие (клик);
 		self.$staggerItems = options.staggerItems || self.$navMenuItem;  //Элементы в стеке, к которым применяется анимация. По умолчанию navMenuItem;
 
 		self._animateSpeed = _animateSpeed;
@@ -213,6 +219,11 @@ function printShow() {
 		self.createOverlay();
 		self.toggleNav();
 		self.clearStyles();
+
+		// special for ingosstrah project
+		if ( $('body').hasClass('home-page') ) {
+			self.menuItemsEvent();
+		}
 	};
 
 	MainNavigation.prototype.navIsOpened = false;
@@ -281,8 +292,7 @@ function printShow() {
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
 			$buttonMenu = self.$btnMenu,
-			_animationSpeed = self._animateSpeedOverlay,
-			$staggerItems = self.$staggerItems;
+			_animationSpeed = self._animateSpeedOverlay;
 
 		$buttonMenu.addClass(self.modifiers.active);
 		$html.addClass(self.modifiers.openStart);
@@ -296,9 +306,8 @@ function printShow() {
 
 		navTween
 			.to($navContainer, _animationSpeed / 1000, {
-				yPercent: 0, onComplete: function () {
+				autoAlpha: 1, onComplete: function () {
 					$html.addClass(self.modifiers.opened);
-					TweenMax.staggerTo($staggerItems, 0.3, {autoAlpha:1, scale:1, ease:Cubic.easeInOut}, 0.08);
 				}, ease:Cubic.easeInOut
 			});
 
@@ -322,7 +331,7 @@ function printShow() {
 		self.showOverlay(false);
 
 		TweenMax.to($navContainer, _animationSpeed / 1000, {
-			yPercent: 120, onComplete: function () {
+			autoAlpha: 0, onComplete: function () {
 				self.preparationAnimation();
 			}
 		});
@@ -334,14 +343,15 @@ function printShow() {
 	MainNavigation.prototype.preparationAnimation = function() {
 		var self = this,
 			$navContainer = self.$navContainer,
-			$staggerItems = self.$staggerItems,
 			$btnMenu = self.$btnMenu;
 
 		if ($btnMenu.is(':visible')) {
-			TweenMax.set($navContainer, {yPercent: 120, onComplete: function () {
+			TweenMax.set($navContainer, {autoAlpha: 0, onComplete: function () {
 				$navContainer.show(0);
+
+				$navContainer.on('menuStyleClear', function () {
+				});
 			}});
-			TweenMax.set($staggerItems, {autoAlpha: 0, scale: 0.8});
 		}
 	};
 
@@ -349,32 +359,55 @@ function printShow() {
 	MainNavigation.prototype.clearStyles = function() {
 		var self = this,
 			$btnMenu = self.$btnMenu,
-			$navContainer = self.$navContainer,
-			$staggerItems = self.$staggerItems;
+			$navContainer = self.$navContainer;
 
 		//clear on horizontal resize
 		$(window).on('resizeByWidth', function () {
+			if ($btnMenu.is(':hidden') && !self.navIsOpened) {
+				console.log(1);
+				return;
+			}
+
 			if (!$btnMenu.is(':visible')) {
+				console.log(2);
+				self.closeNav();
 				$navContainer.attr('style', '');
-				$staggerItems.attr('style', '');
 			} else {
+				console.log(3);
 				self.closeNav();
 			}
 		});
+	};
+
+	// special for ingosstrah project
+	// only home page
+	// close menu on click first level nav item
+	MainNavigation.prototype.menuItemsEvent = function() {
+		var self = this,
+			$btnMenu = self.$btnMenu,
+			$menuItemLink = self.$navMenuAnchor;
+
+		//clear on horizontal resize
+		$menuItemLink.on('click', function () {
+			if (!$btnMenu.is(':hidden')) {
+				self.closeNav();
+			}
+		})
 	};
 
 	window.MainNavigation = MainNavigation;
 
 }(jQuery));
 
-function mainNavigationInit(){
-	var $container = $('.nav');
+function toggleMenu(){
+	var $container = $('.sidebar');
 	if(!$container.length){ return; }
 	new MainNavigation({
 		navContainer: $container,
-		overlayAppend: '.wrapper',
+		navMenuItem: '.menu__list > li',
+		overlayAppend: '.main',
 		animationSpeed: 300,
-		overlayBoolean: true,
+		overlayBoolean: false,
 		overlayAlpha: 0.75
 	});
 }
@@ -478,14 +511,6 @@ function popupInitial(){
 	});
 }
 /*popup initial end*/
-
-/**!
- * preloader
- * */
-function preloadPage(){
-	$('html').addClass('page-loaded');
-}
-/*preloader end*/
 
 /**
  * multi accordion
@@ -846,8 +871,9 @@ function stickyLayout(){
 		var resizeTimerMenu;
 
 		$(window).on('load resize', function () {
-			if($(window).width() < 640){
-				$sidebar.trigger("sticky_kit:detach").attr('style','');
+			if($(window).width() < 1280){
+				// $sidebar.trigger("sticky_kit:detach").attr('style','');
+				$sidebar.trigger("sticky_kit:detach").css('position','fixed');
 				return;
 			}
 
@@ -879,7 +905,7 @@ $(document).ready(function(){
 		customSelect($('select.cselect'));
 	}
 	printShow();
-	mainNavigationInit();
+	toggleMenu();
 	headerShow();
 	pageIsScrolled();
 	popupInitial();
