@@ -381,7 +381,7 @@ function mainNavigationInit(){
 /*main navigation end*/
 
 /**
- * add class on scroll to top
+ * header toggle on scroll event
  * */
 function headerShow(){
 	// external js:
@@ -400,7 +400,7 @@ function headerShow(){
 		previousScrollTop = currentScrollTop;
 	});
 }
-/*add class on scroll to top end*/
+/*header toggle on scroll event end*/
 
 /**
  * add class on scroll to top
@@ -646,169 +646,6 @@ function languageEvents() {
 }
 /*drop language end*/
 
-/**
- *  tabs
- * */
-function pagesSwitcher() {
-	// external js:
-	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
-	// 2) resizeByWidth (resize only width);
-
-	var $main = $('.main');
-
-	if($main.length){
-		var $anchor = $('.js-pages-anchor'),
-			$container = $('.js-pages-container'),
-			$content = $('.js-pages-content'),
-			$thumb = $('.js-traffic-tumbler'),
-			activeClass = 'current',
-			animationSpeed = 0.3,
-			animationHeightSpeed = 0.15;
-
-		$.each($main, function () {
-			var $this = $(this),
-				$thisAnchor = $this.find($anchor),
-				$thisContainer = $this.find($container),
-				$thisContent = $this.find($content),
-				$thisThumb = $this.find($thumb),
-				dataPrevThumb = $thisThumb.prev().find($anchor).data('for'),
-				dataNextThumb = $thisThumb.next().find($anchor).data('for'),
-				initialDataAtr = 'page-common',
-				activeDataAtr = false;
-
-			// prepare traffic content
-			function prepareTrafficContent() {
-				$thisContainer.css({
-					'position': 'relative',
-					'overflow': 'hidden'
-				});
-
-				$thisContent.css({
-					'display': 'block',
-					'position': 'absolute',
-					'left': 0,
-					'right': 0,
-					'width': '100%',
-					'z-index': -1
-				});
-
-				switchContent();
-			}
-
-			prepareTrafficContent();
-
-			// toggle content
-			$thisAnchor.on('click', function (e) {
-				e.preventDefault();
-
-				var $cur = $(this),
-					dataFor = $cur.data('for');
-
-				if (activeDataAtr === dataFor) return false;
-
-				initialDataAtr = dataFor;
-
-				switchContent();
-			});
-
-			// thumb content
-			$thumb.on('click', function (e) {
-				e.preventDefault();
-
-				activeDataAtr = false;
-
-				initialDataAtr = (initialDataAtr === dataPrevThumb) ? dataNextThumb : dataPrevThumb;
-
-				switchContent();
-			});
-
-			// switch content
-			function switchContent() {
-				toggleContent();
-				changeHeightContainer();
-				toggleActiveClass();
-
-				// scroll page to top
-				if( $(window).scrollTop() > 0 ) {
-					$('html,body').stop().animate({scrollTop: 0}, 330);
-				}
-			}
-
-			// show active content and hide other
-			function toggleContent() {
-				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
-
-				TweenMax.set($thisContent, {
-					autoAlpha: 0,
-					'z-index': -1
-				});
-
-				TweenMax.to($initialContent, animationSpeed, {
-					autoAlpha: 1,
-					onComplete: function () {
-						$initialContent.css('z-index', 2);
-					}
-				});
-			}
-
-			// change container's height
-			function changeHeightContainer() {
-				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
-
-				TweenMax.to($thisContainer, animationHeightSpeed, {
-					'height': $initialContent.outerHeight(),
-					onComplete: function () {
-
-						// recalculation position sticky elements
-						$('.sidebar').trigger("sticky_kit:recalc");
-						$('.aside').trigger("sticky_kit:recalc");
-
-					}
-				});
-			}
-
-			$thisContainer.on('pagesChangeHeight', function () {
-				changeHeightContainer();
-			});
-
-			// change container's height on resize window width
-			$(window).on('resizeByWidth', function () {
-				changeHeightContainer();
-			});
-
-			// toggle class active
-			function toggleActiveClass(){
-				$thisAnchor.parent().removeClass(activeClass);
-				$thisContent.parent().removeClass(activeClass);
-
-				toggleStateThumb();
-
-				if (initialDataAtr !== activeDataAtr) {
-
-					activeDataAtr = initialDataAtr;
-
-					$thisAnchor.filter('[data-for="' + initialDataAtr + '"]').parent().addClass(activeClass);
-					$thisContent.filter('[data-id="' + initialDataAtr + '"]').parent().addClass(activeClass);
-
-					return false;
-				}
-
-				activeDataAtr = false;
-			}
-
-			// toggle thumb's state
-			function toggleStateThumb() {
-				$thisThumb.addClass(activeClass);
-
-				if (initialDataAtr == dataPrevThumb) {
-					$thisThumb.removeClass(activeClass)
-				}
-			}
-		});
-	}
-}
-/* tabs end */
-
 /**!
  * common slider
  * */
@@ -818,28 +655,27 @@ function commonSliderInit() {
 
 	if($commonSliders.length) {
 		$commonSliders.each(function() {
-			var $currentSlider = $(this);
-
+			var $currentSlider = $(this),
+				$sliderNav = $('.js-common-slider-nav');
+			
 			$currentSlider.on('init', function (event, slick) {
 
-				// recalculation position sticky elements
-				// $('.sidebar').trigger("sticky_kit:recalc");
-				// $('.aside').trigger("sticky_kit:recalc");
+				addCurrentClass(slick.currentSlide);
 
 			}).slick({
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				infinite: true,
-				// autoplay: true,
-				// autoplaySpeed: 8000,
+				speed: 150,
+				autoplay: true,
+				autoplaySpeed: 8000,
 				dots: false,
 				arrows: false,
 				fade: true,
 				focusOnSelect: true,
-				// pauseOnHover: true,
 				touchMove: false,
 				draggable: false,
-				// accessibility: false,
+				accessibility: false,
 				swipe: false
 			}).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
 
@@ -847,26 +683,24 @@ function commonSliderInit() {
 
 			});
 
-			var $sliderNav = $('.js-common-slider-nav');
-
-			// common slider's navigation
+			// common slider's navigation events
 			$sliderNav.on('click', 'a', function(e){
 
 				e.preventDefault();
 
 				var $this = $(this);
-				if ($this.parent().hasClass('current')) return false;
+				if ($this.parent().hasClass('current-slide')) return false;
 
 				var index = $this.attr('data-slide');
 				$currentSlider.slick('slickGoTo', index);
 
 			});
 
-			// toggle class current slide on nav
+			// toggle class current slide on navigation
 			function addCurrentClass(index) {
 
-				$sliderNav.find('li').removeClass('current');
-				$sliderNav.find('a[data-slide="'+index+'"]').parent().addClass('current');
+				$sliderNav.find('li').removeClass('current-slide');
+				$sliderNav.find('a[data-slide="'+index+'"]').parent().addClass('current-slide');
 
 			}
 		});
