@@ -182,6 +182,10 @@ strong em{
 	margin-right: 280px;
 	min-height: 1px;
 }
+.footer-nav{
+	margin-right: 280px;
+	margin-left: -15px;
+}
 .footer .layout{
 	position: relative;
 	min-height: 0;
@@ -191,9 +195,6 @@ strong em{
 	width: 100%;
 	float: left;
 }
-.footer-nav{
-	margin-right: 280px;
-}
 .max-wrap,
 .max-wrap-md{
 	margin-left: auto;
@@ -201,6 +202,9 @@ strong em{
 	padding-left: 40px !important;
 	padding-right: 40px !important;
 	box-sizing: border-box;
+}
+.footer-holder{
+	padding: 0 40px;
 }
 .max-wrap-md{
 	max-width: 880px;
@@ -222,6 +226,7 @@ strong em{
 
 .header, .header-holder{ height: 80px; }
 .main{ padding-top: 80px; }
+.aside-short{ top: 80px; }
 .content{ padding-top: 0; }
 
 .main > .spacer{
@@ -1803,7 +1808,7 @@ label,
 	float: none;
 	height: auto;
 	list-style: none;
-	padding: 0;
+	padding: 5px 0 0;
 	margin: 0;
 	line-height: 24px;
 }
@@ -1914,7 +1919,7 @@ label,
 	width: 79px;
 }
 .search-form{
-	width: 79px;
+	width: 80px;
 	height: 100%;
 	position: absolute;
 	top: 0;
@@ -1987,7 +1992,7 @@ label,
 	left: -2px;
 	top: -2px;
 	bottom: -2px;
-	width: 79px;
+	width: 80px;
 	overflow: hidden;
 	text-indent: -9999px;
 	text-align: center;
@@ -2102,12 +2107,13 @@ label,
 .lang > a{
 	display: block;
 	position: relative;
-	width: 78px;
-	padding: 0 20px 0 15px;
+	width: 80px;
+	padding: 0 25px 0 16px;
+	color: #666;
 	text-align: center;
 	background: #fff;
 	border-left: 1px solid #f3f3f3;
-	color: #666;
+	box-sizing: border-box;
 
 	font-size: 0;
 	letter-spacing: -4px;
@@ -2130,7 +2136,6 @@ label,
 .lang > a > span{
 	text-transform: uppercase;
 	vertical-align: middle;
-	padding-right: 4px;
 
 	font-size: 16px;
 	letter-spacing: 0.05em;
@@ -2195,7 +2200,7 @@ label,
 	line-height: 20px;
 	color: #124989;
 	text-decoration: none;
-	padding-right: 26px;
+	padding-right: 25px;
 	padding-left: 34px;
 	background: #fff;
 	border-left: 1px solid #f3f3f3;
@@ -3196,6 +3201,82 @@ a.aside-widget__inner{
 	color: #666;
 }
 /*aside widgets end*/
+
+/*aside short*/
+.aside-short{
+	position: fixed;
+	/*top: MAIN BLOCKS*/
+	right: 0;
+	width: 60px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+	display: none;
+	overflow: hidden;
+	-webkit-transition-property: -webkit-transform;
+	transition-property: transform;
+	-webkit-transition-duration: 0.35s;
+	transition-duration: 0.35s;
+	-webkit-transform: translate(0, 0);
+	-ms-transform: translate(0, 0);
+	transform: translate(0, 0);
+}
+.aside-short.active{
+	-webkit-transform: translate(-280px, 0);
+	-ms-transform: translate(-280px, 0);
+	transform: translate(-280px, 0);
+}
+.all-services{
+	display: block;
+	height: 60px;
+	border-bottom: 1px solid #295b95;
+	background: #124989;
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	padding: 5px 2px 0;
+	box-sizing: border-box;
+}
+.all-services i{
+	display: block;
+	font-size: 28px;
+	line-height: 30px;
+	height: 30px;
+	pointer-events: none;
+}
+.aside-short.active .all-services i{
+	-webkit-transform: rotate(-180deg);
+	-ms-transform: rotate(-180deg);
+	transform: rotate(-180deg);
+}
+.all-services span{
+	display: block;
+	font-size: 9px;
+	line-height: 13px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+.services-thumb{
+	overflow: hidden;
+	max-height: 300px;
+	-webkit-transition-property: max-height, opacity;
+	transition-property: max-height, opacity;
+	-webkit-transition-duration: 0.35s;
+	transition-duration: 0.35s;
+}
+.aside-short.active .services-thumb{
+	max-height: 0;
+	opacity: 0.5;
+}
+.services-thumb a{
+	display: block;
+	border-top: 1px solid #295b95;
+	height: 60px;
+	background: #124989 no-repeat 50% 50%;
+	box-sizing: border-box;
+}
+.services-thumb a:first-child{
+	border-top: none;
+}
+/*aside short end*/
 /*ASIDE end*/
 /*MAIN end*/
 
@@ -3213,7 +3294,6 @@ a.aside-widget__inner{
 /*footer holder*/
 .footer-holder{
 	position: relative;
-	padding: 0 40px;
 	background: #ededed;
 	box-sizing: border-box;
 	overflow: hidden;
@@ -3251,6 +3331,8 @@ a.aside-widget__inner{
 }
 /*footer nav*/
 .footer-nav{
+	padding-right: 15px;
+
 	font-size: 0;
 	letter-spacing: -4px;
 }
@@ -3259,7 +3341,7 @@ a.aside-widget__inner{
 	display: inline-block;
 	vertical-align: top;
 	box-sizing: border-box;
-	padding: 0 30px 30px;
+	padding: 0 15px 30px;
 	width: 24.98%;
 
 	font-size: 16px;

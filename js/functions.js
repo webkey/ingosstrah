@@ -156,7 +156,7 @@ function selectResize(){
 /* multiselect init end */
 
 /**!
- * main navigation
+ * show / hide menu
  * */
 (function ($) {
 	// external js:
@@ -269,7 +269,7 @@ function selectResize(){
 		var self = this,
 			$buttonMenu = self.$btnMenu;
 
-		self.preparationAnimation();
+		self.prepareAnimation();
 
 		$buttonMenu.on('click', function (e) {
 			if (self.navIsOpened) {
@@ -304,9 +304,12 @@ function selectResize(){
 
 		var navTween = new TimelineMax();
 
+		$navContainer.show(0);
+
 		navTween
 			.to($navContainer, _animationSpeed / 1000, {
 				autoAlpha: 1, onComplete: function () {
+					console.log('openNav');
 					$html.addClass(self.modifiers.opened);
 				}, ease:Cubic.easeInOut
 			});
@@ -321,36 +324,45 @@ function selectResize(){
 		var self = this,
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
-			$buttonMenu = self.$btnMenu,
+			$btnMenu = self.$btnMenu,
 			_animationSpeed = self._animateSpeedOverlay;
 
 		$html.removeClass(self.modifiers.opened);
 		$html.removeClass(self.modifiers.openStart);
-		$buttonMenu.removeClass(self.modifiers.active);
+		$btnMenu.removeClass(self.modifiers.active);
 
 		self.showOverlay(false);
 
+		if ($btnMenu.is(':hidden') ) {
+			console.log('style reset');
+			$navContainer.attr('style', '');
+			return;
+		}
+
 		TweenMax.to($navContainer, _animationSpeed / 1000, {
 			autoAlpha: 0, onComplete: function () {
-				self.preparationAnimation();
+
+				if (!self.navIsOpened) return;
+				console.log('close popup');
+				self.prepareAnimation();
+
+				self.navIsOpened = false;
+
 			}
 		});
-
-		self.navIsOpened = false;
 	};
 
 	// preparation element before animation
-	MainNavigation.prototype.preparationAnimation = function() {
+	MainNavigation.prototype.prepareAnimation = function() {
 		var self = this,
-			$navContainer = self.$navContainer,
-			$btnMenu = self.$btnMenu;
+			$navContainer = self.$navContainer;
 
-		if ($btnMenu.is(':visible')) {
+		if (self.$btnMenu.is(':visible')) {
 			TweenMax.set($navContainer, {autoAlpha: 0, onComplete: function () {
+
+				console.log('prepareAnimation');
 				$navContainer.show(0);
 
-				$navContainer.on('menuStyleClear', function () {
-				});
 			}});
 		}
 	};
@@ -363,19 +375,7 @@ function selectResize(){
 
 		//clear on horizontal resize
 		$(window).on('resizeByWidth', function () {
-			if ($btnMenu.is(':hidden') && !self.navIsOpened) {
-				console.log(1);
-				return;
-			}
-
-			if (!$btnMenu.is(':visible')) {
-				console.log(2);
-				self.closeNav();
-				$navContainer.attr('style', '');
-			} else {
-				console.log(3);
-				self.closeNav();
-			}
+			self.closeNav();
 		});
 	};
 
@@ -387,7 +387,6 @@ function selectResize(){
 			$btnMenu = self.$btnMenu,
 			$menuItemLink = self.$navMenuAnchor;
 
-		//clear on horizontal resize
 		$menuItemLink.on('click', function () {
 			if (!$btnMenu.is(':hidden')) {
 				self.closeNav();
@@ -398,20 +397,40 @@ function selectResize(){
 	window.MainNavigation = MainNavigation;
 
 }(jQuery));
+/*show / hide menu*/
 
-function toggleMenu(){
+/**!
+ * toggle sidebar
+ * */
+function toggleSidebar(){
 	var $container = $('.sidebar');
 	if(!$container.length){ return; }
 	new MainNavigation({
 		navContainer: $container,
 		navMenuItem: '.menu__list > li',
-		overlayAppend: '.main',
 		animationSpeed: 300,
 		overlayBoolean: false,
 		overlayAlpha: 0.75
 	});
 }
-/*main navigation end*/
+/*toggle sidebar end*/
+
+/**!
+ * toggle aside
+ * */
+function toggleAside(){
+	var $container = $('.aside');
+	if(!$container.length){ return; }
+	new MainNavigation({
+		navContainer: $container,
+		btnMenu: '.aside-opener-js',
+		overlayAppend: '.main',
+		animationSpeed: 300,
+		overlayBoolean: true,
+		overlayAlpha: 0.75
+	});
+}
+/*toggle aside end*/
 
 /**
  * header toggle on scroll event
@@ -849,8 +868,9 @@ function stickyLayout(){
 		var resizeTimerAside;
 
 		$(window).on('load resize', function () {
-			if($(window).width() < 960){
-				$aside.trigger("sticky_kit:detach").attr('style','');
+			if($(window).width() < 980){
+				// $aside.trigger("sticky_kit:detach").attr('style','');
+				$aside.trigger("sticky_kit:detach").css('position','fixed');
 				return;
 			}
 
@@ -905,7 +925,8 @@ $(document).ready(function(){
 		customSelect($('select.cselect'));
 	}
 	printShow();
-	toggleMenu();
+	toggleSidebar();
+	toggleAside();
 	headerShow();
 	pageIsScrolled();
 	popupInitial();
