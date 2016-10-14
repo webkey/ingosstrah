@@ -210,6 +210,8 @@
 }
 .sidebar-frame{
 	height: 100%;
+}
+.sidebar-opened .sidebar-frame{
 	overflow: auto;
 }
 .sidebar-frame:after{

@@ -185,6 +185,14 @@
 
 /*sidebar widgets*/
 /*sidebar widgets end*/
+.main-nav-copy {
+	float: none;
+	width: auto;
+	max-width: 320px;
+}
+.sidebar-content .banners {
+	float: none;
+}
 /*SIDEBAR end*/
 
 /*ASIDE*/
@@ -207,7 +215,6 @@
 }
 .aside-short{
 	display: block;
-	z-index: 2;
 }
 
 /*aside widgets*/

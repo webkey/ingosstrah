@@ -183,8 +183,9 @@ function selectResize(){
 			minWidthItem: 100
 		},settings || {});
 
+		var navContainer = options.navContainer;
 		var self = this,
-			container = $(options.navContainer),
+			container = $(navContainer),
 			_animateSpeed = options.animationSpeed;
 
 		self.options = options;
@@ -210,10 +211,12 @@ function selectResize(){
 
 		self.desktop = device.desktop();
 
+		var navContainerClass = String(navContainer).substring(1);
+
 		self.modifiers = {
 			active: 'active',
-			opened: 'nav-opened',
-			openStart: 'nav-opened-start'
+			openStart: '' + navContainerClass + '-open-start',
+			opened: '' + navContainerClass + '-opened'
 		};
 
 		self.createOverlay();
@@ -406,7 +409,7 @@ function toggleSidebar(){
 	var $container = $('.sidebar');
 	if(!$container.length){ return; }
 	new MainNavigation({
-		navContainer: $container,
+		navContainer: '.sidebar',
 		navMenuItem: '.menu__list > li',
 		animationSpeed: 300,
 		overlayBoolean: false,
@@ -422,11 +425,12 @@ function toggleAside(){
 	var $container = $('.aside');
 	if(!$container.length){ return; }
 	new MainNavigation({
-		navContainer: $container,
+		navContainer: '.aside',
 		btnMenu: '.aside-opener-js',
-		overlayAppend: '.main',
 		animationSpeed: 300,
-		overlayBoolean: true,
+		animationType: 'rtl',
+		overlayAppend: '.main',
+		overlayBoolean: false,
 		overlayAlpha: 0.75
 	});
 }
