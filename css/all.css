@@ -2752,6 +2752,12 @@ a.catalog-item__inner{
 	float: left;
 	margin: 0 0 0 -100%;
 }
+.sidebar-open-start .main-holder{
+	overflow: hidden;
+}
+.sidebar-open-start .footer{
+	z-index: 1;
+}
 
 @media only screen and (min-width: 1280px){
 	.sidebar{
