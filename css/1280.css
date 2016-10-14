@@ -219,6 +219,9 @@
 }
 /*menu*/
 /*general styles menu*/
+.menu__list .menu-item-hide{
+	display: block;
+}
 /*shadow inside open drop*/
 /*shadow inside open drop end*/
 /*general styles menu end*/

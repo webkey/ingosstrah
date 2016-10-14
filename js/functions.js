@@ -298,6 +298,10 @@ function selectResize(){
 			$buttonMenu = self.$btnMenu,
 			_animationSpeed = self._animateSpeedOverlay;
 
+		// event menu before open
+		$navContainer.trigger('beforeMenuOpen');
+
+		// add modifier class before open
 		$buttonMenu.addClass(self.modifiers.active);
 		$html.addClass(self.modifiers.openStart);
 
@@ -313,8 +317,13 @@ function selectResize(){
 		navTween
 			.to($navContainer, _animationSpeed / 1000, {
 				autoAlpha: 1, onComplete: function () {
-					console.log('openNav');
+
+					// event menu after open
+					$navContainer.trigger('afterMenuOpen');
+					
+					// add modifier class after open
 					$html.addClass(self.modifiers.opened);
+					
 				}, ease:Cubic.easeInOut
 			});
 
@@ -331,6 +340,10 @@ function selectResize(){
 			$btnMenu = self.$btnMenu,
 			_animationSpeed = self._animateSpeedOverlay;
 
+		// event menu before close
+		$navContainer.trigger('beforeMenuClose');
+
+		// remove modifier class before close
 		$html.removeClass(self.modifiers.opened);
 		$html.removeClass(self.modifiers.openStart);
 		$btnMenu.removeClass(self.modifiers.active);
@@ -347,7 +360,10 @@ function selectResize(){
 			autoAlpha: 0, onComplete: function () {
 
 				if (!self.navIsOpened) return;
-				console.log('close popup');
+
+				// event menu after close
+				$navContainer.trigger('afterMenuClose');
+
 				self.prepareAnimation();
 
 				self.navIsOpened = false;
@@ -419,8 +435,11 @@ function selectResize(){
  * toggle sidebar
  * */
 function toggleSidebar(){
+
 	var $container = $('.sidebar');
+
 	if(!$container.length){ return; }
+
 	new MainNavigation({
 		navContainer: '.sidebar',
 		navMenuItem: '.menu__list li',
@@ -430,7 +449,7 @@ function toggleSidebar(){
 		overlayAlpha: 0.75
 	});
 
-	// close sidebar on click slider common
+	// close sidebar on click common slider (index.html)
 	function closeMenuOnClickSlide() {
 		$('.js-common-slider-nav').on('click', 'a[data-slide]', function () {
 			$container.trigger('closeMenu');
@@ -438,6 +457,29 @@ function toggleSidebar(){
 	}
 
 	closeMenuOnClickSlide();
+
+	// toggle autoplay to false for common slider (index.html)
+	function toggleAutoplaySlider() {
+
+		$container.on('beforeMenuOpen', function () {
+
+			console.log("menu before open");
+
+			$('.common-slider').slick("slickSetOption", "autoplay", false, true);
+
+		});
+
+		$container.on('beforeMenuClose', function () {
+
+			console.log("menu before close");
+
+			$('.common-slider').slick("slickSetOption", "autoplay", true, true);
+
+		});
+
+	}
+
+	toggleAutoplaySlider();
 }
 /*toggle sidebar end*/
 
