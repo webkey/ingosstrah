@@ -222,6 +222,7 @@ function selectResize(){
 		self.createOverlay();
 		self.toggleNav();
 		self.clearStyles();
+		self.closeNavMethod();
 
 		// special for ingosstrah project
 		if ( $('body').hasClass('home-page') ) {
@@ -355,6 +356,18 @@ function selectResize(){
 		});
 	};
 
+	// close method
+	MainNavigation.prototype.closeNavMethod = function() {
+
+		var self = this;
+
+		self.$navContainer.on('closeMenu', function () {
+			console.log('init closeNavMethod');
+			self.closeNav();
+		})
+
+	};
+
 	// preparation element before animation
 	MainNavigation.prototype.prepareAnimation = function() {
 		var self = this,
@@ -388,9 +401,9 @@ function selectResize(){
 	MainNavigation.prototype.menuItemsEvent = function() {
 		var self = this,
 			$btnMenu = self.$btnMenu,
-			$menuItemLink = self.$navMenuAnchor;
+			$menuItemLink = self.$navMenuItem;
 
-		$menuItemLink.on('click', function () {
+		$('.js-common-slider-nav').on('click', function () {
 			if (!$btnMenu.is(':hidden')) {
 				self.closeNav();
 			}
@@ -410,11 +423,21 @@ function toggleSidebar(){
 	if(!$container.length){ return; }
 	new MainNavigation({
 		navContainer: '.sidebar',
-		navMenuItem: '.menu__list > li',
+		navMenuItem: '.menu__list li',
 		animationSpeed: 300,
-		overlayBoolean: false,
+		overlayAppend: '.main',
+		overlayBoolean: true,
 		overlayAlpha: 0.75
 	});
+
+	// close sidebar on click slider common
+	function closeMenuOnClickSlide() {
+		$('.js-common-slider-nav').on('click', 'a[data-slide]', function () {
+			$container.trigger('closeMenu');
+		})
+	}
+
+	closeMenuOnClickSlide();
 }
 /*toggle sidebar end*/
 

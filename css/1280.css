@@ -189,7 +189,7 @@
 	left: 0;
 	/*top: MAIN BLOCKS*/
 	bottom: 0;
-	width: 100%;
+	width: 320px;
 	float: none;
 	margin: 0;
 	padding: 0;
@@ -216,13 +216,6 @@
 }
 .sidebar-frame:after{
 	content: none;
-}
-.sidebar-holder{
-	width: 320px;
-	float: left;
-}
-.sidebar-content{
-	display: block;
 }
 /*menu*/
 /*general styles menu*/
