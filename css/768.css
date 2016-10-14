@@ -1,1 +1,206 @@
 @media only screen and (max-width: 767px){}
+
+/*------ TYPOGRAPHIC STYLES ------*/
+/*------ TYPOGRAPHIC STYLES end ------*/
+
+/*MAIN BLOCKS*/
+/*MAIN BLOCKS end*/
+
+/*USER CONTENT*/
+
+/*list*/
+/*list end*/
+
+/*default table*/
+/*default table end*/
+
+/*table styling*/
+/*table styling end*/
+
+/*blockquote*/
+/*blockquote end*/
+
+/*elements form style*/
+/*form common*/
+/*form common end*/
+
+/*placeholder style*/
+/*placeholder style end*/
+
+/*placeholder hidden*/
+/*placeholder hidden end*/
+
+/*form focus*/
+/*form focus end*/
+
+/*form error*/
+/*form error end*/
+
+/*checkbox*/
+/*checkbox end*/
+
+/*radio*/
+/*radio end*/
+
+/*input file*/
+/*input file end*/
+
+/*form layout*/
+/*form layout end*/
+
+/*select*/
+/*select overall*/
+/*select overall end*/
+
+/*multiselect button*/
+/*multiselect button end*/
+
+/*multiselect menu*/
+/*multiselect menu end*/
+/*select end*/
+
+/*elements form style end*/
+
+/*download files items*/
+/*download files items end*/
+
+/*social networks*/
+/*social networks end*/
+/*USER CONTENT end*/
+
+/*inline popup*/
+/*inline popup end*/
+
+/*default form*/
+/*default form end*/
+
+/*callback form*/
+/*callback form end*/
+
+/*login form*/
+/*login form end*/
+
+/*slider*/
+/*slider end*/
+
+/*HEADER*/
+.header{ }
+/*logo*/
+.logo{ }
+/*logo end*/
+
+/*main navigation*/
+.header .nav{ }
+/*main navigation end*/
+
+/*user*/
+.user{ }
+
+/*search form*/
+.header .show-search{
+	display: none;
+}
+
+/*search btn submit*/
+/*search btn submit end*/
+
+/*search form opener*/
+/*search form opener end*/
+
+.lang{ }
+
+.header .login{
+	display: none;
+}
+/*user end*/
+
+/*user copy*/
+.user-copy{
+	display: block;
+}
+/*user copy end*/
+
+/*call*/
+.call{ }
+/*call end*/
+
+/*button menu*/
+/*button menu end*/
+/*HEADER end*/
+
+/*MAIN*/
+.main{}
+/*CONTENT*/
+/*breadcrumbs*/
+/*breadcrumbs end*/
+
+/*datetime*/
+/*datetime */
+
+/*common slider*/
+.visual__text {
+	font-size: 32px;
+	line-height: 40px;
+}
+/*common slider end*/
+
+/*visual*/
+/*visual end*/
+
+/*graphs*/
+/*graphs end*/
+
+/*catalog*/
+/*catalog end*/
+/*CONTENT end*/
+
+/*SIDEBAR*/
+.sidebar{ }
+/*menu*/
+/*general styles menu*/
+/*shadow inside open drop*/
+/*shadow inside open drop end*/
+/*general styles menu end*/
+
+/*styles to menu level 1*/
+/*styles to menu level 1 end*/
+/*styles to menu level 2*/
+/*styles to menu level 2 end*/
+
+/*styles to menu level 3*/
+/*styles to menu level 3 end*/
+/*menu end*/
+
+/*sidebar widgets*/
+/*sidebar widgets end*/
+/*SIDEBAR end*/
+
+/*ASIDE*/
+.aside{ }
+
+/*aside widgets*/
+/*aside widgets end*/
+/*ASIDE end*/
+/*MAIN end*/
+
+/*FOOTER*/
+.footer{}
+/*footer holder*/
+
+/*footer common*/
+/*footer nav*/
+.footer-nav__col{ }
+/*footer nav end*/
+
+/*footer adr*/
+.footer-adr { }
+/*footer adr end*/
+/*footer common end*/
+
+/*footer bottom*/
+
+/*developer*/
+/*developer end*/
+/*footer bottom end*/
+/*footer holder end*/
+/*FOOTER end*/

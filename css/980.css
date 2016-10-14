@@ -1,7 +1,5 @@
 @media only screen and (max-width: 979px){}
 
-@media only screen and (max-width: 1279px){}
-
 /*------ TYPOGRAPHIC STYLES ------*/
 /*------ TYPOGRAPHIC STYLES end ------*/
 
@@ -109,7 +107,12 @@
 /*HEADER*/
 .header{ }
 /*logo*/
-.logo{ }
+.logo {
+	width: 210px;
+	background-position: 50% 50%;
+	-webkit-background-size: 72%;
+	background-size: 72%;
+}
 /*logo end*/
 
 /*main navigation*/
@@ -129,17 +132,15 @@
 /*search form opener end*/
 
 .lang{ }
-
-.login{
-	display: none;
-}
 /*user end*/
 
 /*call*/
-.call{ }
 /*call end*/
 
 /*button menu*/
+.btn-menu{
+	left: 210px;
+}
 /*button menu end*/
 /*HEADER end*/
 
@@ -219,6 +220,10 @@
 /*footer holder*/
 
 /*footer common*/
+.footer-common-holder {
+	float: none;
+	width: auto;
+}
 /*footer nav*/
 .footer-nav__col{ }
 /*footer nav end*/
@@ -233,9 +238,20 @@
 /*footer common end*/
 
 /*footer bottom*/
-
+.footer-bottom{
+	text-align: left;
+	padding-bottom: 20px;
+}
+.footer-bottom:after{
+	content: none;
+}
+.footer-col{
+	display: block;
+	width: auto;
+}
 /*developer*/
 /*developer end*/
+
 /*footer bottom end*/
 /*footer holder end*/
 /*FOOTER end*/
