@@ -1366,7 +1366,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 .inline-popup_narrow{
-	width: 445px;
+	max-width: 445px;
 }
 .inline-popup__title{
 	display: block;
@@ -3261,10 +3261,12 @@ a.aside-widget__inner{
 	max-height: 300px;
 	-webkit-transition-property: max-height;
 	transition-property: max-height;
-	-webkit-transition-duration: 0.35s;
-	transition-duration: 0.35s;
+	-webkit-transition-duration: 0s;
+	transition-duration: 0s;
 }
 .aside-short.active .services-thumb{
+	-webkit-transition-duration: 0.35s;
+	transition-duration: 0.35s;
 	max-height: 0;
 	opacity: 0.5;
 }

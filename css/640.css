@@ -23,14 +23,14 @@ h3 {
 .footer-nav{
 	margin-right: -15px;
 	margin-left: -15px;
+	padding-right: 0;
 }
-.max-wrap,
 .max-wrap-md{
-	margin-left: auto;
-	margin-right: auto;
 	padding-left: 20px !important;
 	padding-right: 60px !important;
-	box-sizing: border-box;
+}
+.inline-popup .max-wrap-md{
+	padding-right: 20px !important;
 }
 .header-holder {
 	padding-left: 0 !important;
@@ -294,7 +294,7 @@ h3 {
 /*graphs end*/
 
 /*catalog*/
-.catalog .catalog-item {
+.catalog .catalog-item{
 	display: block;
 	width: auto;
 	border: none !important;
@@ -304,6 +304,9 @@ h3 {
 }
 .catalog .catalog-item:first-child{
 	border: none !important;
+}
+.catalog .catalog-item:after{
+	content: none !important;
 }
 /*catalog end*/
 /*CONTENT end*/
