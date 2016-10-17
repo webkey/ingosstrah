@@ -229,6 +229,7 @@ strong em{
 .main{ padding-top: 80px; }
 .aside-short{ top: 80px; }
 .content{ padding-top: 0; }
+.user-content{ padding-bottom: 40px; }
 
 .main > .spacer{
 	display: block;
@@ -2737,6 +2738,193 @@ a.catalog-item__inner{
 	padding: 0 0 20px;
 }
 /*catalog end*/
+
+/**news**/
+/*news head*/
+.news-head{
+	padding: 0 0 30px;
+}
+.news-head:before,
+.news-head:after { content: ""; display: table; }
+.news-head:after { clear: both; }
+
+.news-head__control,
+.user-content .news-head__control{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.news-head__control{
+	float: left;
+	font-size: 24px;
+	line-height: 32px;
+	color: #666;
+}
+.news-head__control li,
+.news-head__control li:first-child,
+.user-content .news-head__control li,
+.user-content .news-head__control li:first-child{
+	padding: 0 45px 20px 0;
+	background: none;
+}
+.news-head__control li{
+	float: left;
+}
+.news-head__control li:before,
+.news-head__control li:first-child:before,
+.user-content .news-head__control li:before,
+.user-content .news-head__control li:first-child:before{
+	content: none;
+}
+.news-head__control a{
+	text-decoration: none;
+	-webkit-transition-property: color;
+	transition-property: color;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+.desktop .news-head__control a:hover,
+.news-head__control .active a{
+	color: #666;
+}
+.news-head__control a > span{
+	border-bottom: 1px solid #124989;
+	-webkit-transition-property: border;
+	transition-property: border;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+.desktop .news-head__control a:hover > span,
+.news-head__control .active a > span{
+	border-bottom-color: transparent;
+}
+
+.years-list{
+	font-size: 18px;
+	line-height: 24px;
+}
+.news-head .years-list{
+	overflow: hidden;
+	float: right;
+	padding: 3px 0 0;
+}
+.years-list__item{
+	float: left;
+	padding: 0 15px 20px;
+}
+.years-list__item:first-child{
+	padding-left: 0;
+}
+.years-list__item:last-child{
+	padding-right: 0;
+}
+.years-list__prev{
+	padding-left: 0;
+	padding-right: 23px;
+}
+.years-list__next{
+	padding-left: 23px;
+	padding-right: 0;
+}
+.years-list__prev a,
+.years-list__next a{
+	text-decoration: none;
+	font-size: 24px;
+}
+/*news head end*/
+
+/*news list*/
+.news-list{
+	padding-bottom: 1px;
+	margin-bottom: 40px;
+}
+.news-item{
+	margin-bottom: -1px;
+	position: relative;
+}
+.desktop .news-item:hover{
+	z-index: 1;
+}
+.news-item__inner{
+	display: block;
+	overflow: hidden;
+	padding: 30px;
+	min-height: 185px;
+	text-decoration: none;
+	color: #666;
+	background: #fff;
+	border: 1px solid #ccc;
+	box-shadow: 5px 5px 6px rgba(0, 0, 0, 0);
+	-webkit-transition-property: box-shadow;
+	transition-property: box-shadow;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	box-sizing: border-box;
+}
+.desktop a.news-item__inner:hover{
+	display: block;
+	background: #fff;
+	border: 1px solid #ccc;
+	box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.1);
+}
+.news-item__date{
+	float: left;
+	width: 50px;
+	text-align: center;
+	margin: 0 30px 30px 0;
+	padding: 3px 0 0;
+	color: #999;
+}
+.news-item__date > strong{
+	display: block;
+	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-size: 30px;
+	line-height: 32px;
+	margin: 0 0 -7px;
+}
+.news-item__date > span{
+	display: block;
+	font-size: 14px;
+}
+.news-item__content{
+	overflow: hidden;
+}
+.news-item__title{
+	display: block;
+	font-size: 24px;
+	line-height: 32px;
+	color: #124989;
+	margin: 0 0 12px;
+}
+.new-item__text{
+	display: block;
+	font-size: 14px;
+	line-height: 19px;
+}
+/*news list end*/
+/**news end**/
+
+/*more*/
+.more{
+	padding: 0 0 30px;
+}
+.depict-load{
+	display: inline-block;
+	vertical-align: top;
+	background: url(../img/depict-load-h-2x.png) no-repeat;
+	background: url(../img/depict-load-2x.png) no-repeat;
+	-webkit-background-size: contain;
+	background-size: contain;
+	width: 11px;
+	height: 11px;
+}
+.desktop .btn-frame .depict-load{
+	margin-top: -5px;
+}
+.desktop .btn-frame:hover .depict-load{
+	background-image: url(../img/depict-load-h-2x.png);
+}
+/*more end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

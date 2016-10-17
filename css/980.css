@@ -1,6 +1,9 @@
 @media only screen and (max-width: 979px){}
 
 /*------ TYPOGRAPHIC STYLES ------*/
+h1{
+	text-align: center;
+}
 /*------ TYPOGRAPHIC STYLES end ------*/
 
 /*MAIN BLOCKS*/
@@ -8,6 +11,12 @@
 	left: 0;
 	right: 0;
 	box-shadow: none;
+}
+.max-wrap-md{
+	padding-right: 80px !important;
+}
+.inline-popup .max-wrap-md{
+	padding-right: 40px !important;
 }
 .layout {
 	margin-left: 0;
@@ -164,6 +173,48 @@
 
 /*catalog*/
 /*catalog end*/
+
+/**news**/
+/*news head*/
+.news-head{
+	padding-bottom: 0;
+}
+.news-head__control,
+.user-content .news-head__control{
+	padding-bottom: 15px;
+}
+.news-head__control{
+	float: none;
+	text-align: center;
+}
+.news-head__control li{
+	float: none;
+}
+.news-head__control li,
+.news-head__control li:first-child,
+.user-content .news-head__control li,
+.user-content .news-head__control li:first-child {
+	display: inline-block;
+	vertical-align: top;
+	padding: 0 13px 15px;
+	background: none;
+}
+
+.news-head .years-list{
+	float: none;
+}
+/*news head end*/
+
+/*news list*/
+.news-list{ }
+/*news list end*/
+/**news end**/
+
+/*more*/
+.more{
+	text-align: center;
+}
+/*more end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

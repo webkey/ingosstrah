@@ -20,14 +20,9 @@ h3 {
 .sidebar:before{ width: 100%; }
 .aside{ width: 270px; }
 
-.footer-nav{
-	margin-right: -15px;
-	margin-left: -15px;
-	padding-right: 0;
-}
 .max-wrap-md{
 	padding-left: 20px !important;
-	padding-right: 60px !important;
+	padding-right: 65px !important;
 }
 .inline-popup .max-wrap-md{
 	padding-right: 20px !important;
@@ -50,6 +45,12 @@ h3 {
 .aside,
 .aside-short{ top: 50px; }
 .content{ padding-top: 0; }
+
+.footer-nav{
+	margin-right: -15px;
+	margin-left: -15px;
+	padding-right: 0;
+}
 /*MAIN BLOCKS end*/
 
 /*USER CONTENT*/
@@ -309,6 +310,42 @@ h3 {
 	content: none !important;
 }
 /*catalog end*/
+
+/**news**/
+/*news head*/
+.news-head .years-list{
+	text-align: center;
+}
+.years-list__item{
+	float: none;
+	display: inline-block;
+	vertical-align: top;
+}
+/*news head end*/
+
+/*news list*/
+.news-item__inner{
+	padding: 25px 20px 30px;
+	min-height: 0;
+}
+.news-item__date {
+	display: block;
+	float: none;
+	width: auto;
+	text-align: left;
+	margin: 0 30px 10px 0;
+	padding: 0;
+}
+.news-item__date > strong,
+.news-item__date > span{
+	display: inline-block;
+}
+.news-item__title {
+	font-size: 22px;
+	line-height: 30px;
+}
+/*news list end*/
+/**news end**/
 /*CONTENT end*/
 
 /*SIDEBAR*/

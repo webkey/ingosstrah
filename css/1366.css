@@ -10,6 +10,24 @@
 	line-height: 36px;
 }
 
+.news-head__control{
+	font-size: 20px;
+}
+.news-head__control li,
+.news-head__control li:first-child,
+.user-content .news-head__control li,
+.user-content .news-head__control li:first-child {
+	padding: 0 30px 20px 0;
+	background: none;
+}
+
+.years-list{
+	font-size: 16px;
+}
+.years-list__item {
+	padding-left: 10px;
+	padding-right: 10px;
+}
 
 
 .footer-nav__list,
