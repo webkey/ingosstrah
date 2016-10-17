@@ -473,7 +473,7 @@ function toggleSidebar(){
 
 		$container.on('beforeMenuClose', function () {
 
-			if ( $(window).outerWidth > 640 ) {
+			if ( $(window).outerWidth() > 640 ) {
 				$('.common-slider').slick("slickSetOption", "autoplay", true, true);
 			}
 
@@ -488,7 +488,9 @@ function toggleSidebar(){
 
 		$container.on('beforeMenuOpen', function () {
 
-			$('.aside').trigger('closeMenu');
+			if ( $(window).outerWidth() < 980 ) {
+				$('.aside').trigger('closeMenu');
+			}
 
 		});
 

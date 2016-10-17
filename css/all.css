@@ -41,7 +41,7 @@ h1{
 	font-family: 'helvetica-neue-cyr-thin', Arial, Helvetica, sans-serif;
 	font-size: 36px;
 	line-height: 48px;
-	padding: 0 0 20px;
+	padding: 0 0 40px;
 	overflow: hidden;
 }
 h2{
@@ -1145,7 +1145,6 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 /*elements form style end*/
 
 /*download files items*/
-
 /*files item*/
 .files{
 	padding: 0 0 20px;
@@ -1354,6 +1353,73 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .social-vk svg{ width: 22px; }
 .desktop .social-networks a:hover .soc-vk-path{ fill: #4c75a3; }
 /*social networks end*/
+
+/*list links*/
+.list-links,
+.user-content .list-links{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.list-links li,
+.user-content .list-links li,
+.list-links li:first-child,
+.user-content .list-links li:first-child{
+	padding: 0 0 22px;
+	background: none;
+}
+.list-links li:before,
+.user-content .list-links li:before,
+.list-links li:first-child:before,
+.user-content .list-links li:first-child:before{
+	content: none;
+}
+.list-links a{
+	display: block;
+	position: relative;
+	padding: 18px 60px 18px 20px;
+	text-decoration: none;
+	background: #f3f3f3;
+	border: 1px solid #ccc;
+	color: #124989;
+	box-shadow: 5px 5px 6px rgba(0, 0, 0, 0);
+	-webkit-transition-property: box-shadow, background;
+	transition-property: box-shadow, background;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	box-sizing: border-box;
+}
+.desktop .list-links a:hover {
+	background: #fff;
+	border: 1px solid #ccc;
+	box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.1);
+}
+.list-links a [class^="icon-"],
+.list-links a [class*="icon-"]{
+	text-align: center;
+	color: #fff;
+	position: absolute;
+	right: 22px;
+	top: 50%;
+	margin-top: -11px;
+	width: 22px;
+	height: 22px;
+	padding-left: 2px;
+	font-size: 20px;
+	line-height: 1;
+	background: #ccc;
+	border-radius: 50%;
+	box-sizing: border-box;
+	-webkit-transition-property: background;
+	transition-property: background;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+}
+.desktop .list-links a:hover [class^="icon-"],
+.desktop .list-links a:hover [class*="icon-"]{
+	background: #124989;
+}
+/*list links end*/
 /*USER CONTENT end*/
 
 /*inline popup*/
@@ -2862,7 +2928,6 @@ a.catalog-item__inner{
 	box-sizing: border-box;
 }
 .desktop a.news-item__inner:hover{
-	display: block;
 	background: #fff;
 	border: 1px solid #ccc;
 	box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.1);
@@ -2918,7 +2983,7 @@ a.catalog-item__inner{
 	width: 11px;
 	height: 11px;
 }
-.desktop .btn-frame .depict-load{
+.btn-frame .depict-load{
 	margin-top: -5px;
 }
 .desktop .btn-frame:hover .depict-load{
