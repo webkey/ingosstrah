@@ -124,7 +124,7 @@ h3 {
 /*social networks end*/
 
 /*list links*/
-.list-links a{ padding: 18px 40px 18px 20px; }
+.list-links a{ padding-right: 40px; }
 .list-links a [class^="icon-"], .list-links a [class*="icon-"]{ right: 13px; }
 /*list links end*/
 /*USER CONTENT end*/

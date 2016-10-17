@@ -229,7 +229,7 @@ strong em{
 .main{ padding-top: 80px; }
 .aside-short{ top: 80px; }
 .content{ padding-top: 0; }
-.user-content{ padding-bottom: 40px; }
+.user-content{ padding-bottom: 40px; padding-top: 20px; }
 
 .main > .spacer{
 	display: block;
@@ -1377,7 +1377,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 .list-links a{
 	display: block;
 	position: relative;
-	padding: 18px 60px 18px 20px;
+	padding: 14px 60px 14px 20px;
 	text-decoration: none;
 	background: #f3f3f3;
 	border: 1px solid #ccc;
@@ -2496,7 +2496,7 @@ label,
 .breadcrumbs{
 	line-height: 24px;
 	color: #999;
-	padding: 20px 0 20px;
+	padding: 0 0 20px;
 }
 .breadcrumbs-list,
 .user-content .breadcrumbs-list{
