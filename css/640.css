@@ -41,7 +41,9 @@ h3 {
 .main{
 	padding-top: 50px;
 }
-.sidebar,
+.sidebar{
+	padding-top: 50px;
+}
 .aside,
 .aside-short{ top: 50px; }
 .content{ padding-top: 0; }

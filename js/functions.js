@@ -519,47 +519,6 @@ function toggleAside(){
 /*toggle aside end*/
 
 /**
- * header toggle on scroll event
- * */
-function headerShow(){
-	// external js:
-	// 1) resizeByWidth (resize only width);
-
-	var $page = $('html'),
-		minScrollTop = $('.header').outerHeight();
-
-	var previousScrollTop = $(window).scrollTop();
-	$(window).on('load scroll resizeByWidth', function () {
-		var currentScrollTop = $(window).scrollTop();
-		var showHeaderPanel = currentScrollTop < minScrollTop || currentScrollTop < previousScrollTop;
-
-		$page.toggleClass('header-show', showHeaderPanel);
-
-		previousScrollTop = currentScrollTop;
-	});
-}
-/*header toggle on scroll event end*/
-
-/**
- * add class on scroll to top
- * */
-function pageIsScrolled(){
-	// external js:
-	// 1) resizeByWidth (resize only width);
-
-	var $page = $('html'),
-		minScrollTop = $('.header').outerHeight();
-
-	$(window).on('load scroll resizeByWidth', function () {
-		var currentScrollTop = $(window).scrollTop();
-		var showHeaderPanel = (currentScrollTop >= minScrollTop);
-
-		$page.toggleClass('page-is-scrolled', showHeaderPanel);
-	});
-}
-/*add class on scroll to top end*/
-
-/**
  * popup initial
  * */
 function popupInitial(){
@@ -920,6 +879,377 @@ function equalHeightInit() {
 }
 /*equal height end*/
 
+/**!
+ * map init
+ * */
+// var styleMap = [{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#d3d3d3"}]},{"featureType":"transit","stylers":[{"color":"#808080"},{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"on"},{"color":"#b3b3b3"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"weight":1.8}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"color":"#d7d7d7"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ebebeb"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#a7a7a7"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#efefef"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#696969"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"color":"#737373"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#d6d6d6"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"color":"#dadada"}]}];
+
+var pinMap = {
+	path: "M572.8,182.1c-15.2-35.3-36.6-67.1-63.6-94.7c-27.7-27.7-59.5-49.1-94.7-63.6C377.8,8.5,338.4,0.2,298.3,0.2 s-79.5,7.6-116.2,23.5C146.9,39,115.1,60.4,87.4,87.4c-27.7,27.7-49.1,59.5-63.6,94.7C8.6,218.7,0.3,258.1,0.3,298.2 C0.3,366,48,474.5,142.1,621.8c69.1,107.9,139,197.7,139.7,199.1l15.9,20.7l15.9-20.7c0.7-0.7,70.5-91.3,139.7-199.1 c94-147.3,141.7-255.8,141.7-323.6C595.6,257.4,588,218.7,572.8,182.1z M298.3,399.9c-63.6,0-115.5-51.9-115.5-115.5 s51.9-115.5,115.5-115.5s115.5,51.9,115.5,115.5C413.8,348.7,361.9,399.9,298.3,399.9z",
+	fillColor: '#124989',
+	fillOpacity: 1,
+	strokeWeight: 0
+};
+
+var localObjects = [
+	[
+		{lat: 53.8970355, lng: 27.5413969}, //coordinates of marker
+		{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
+		pinMap,
+		13,
+		{
+			title: 'Центральный офис',
+			address: '<b>Адрес:</b> <div>Республика Беларусь, 220050<br> г. Минск, ул. Мясникова, 40</div>',
+			phone: '<b>Тел.:</b> <div><a href="tel:+375172035878">+375 17 203-58-78</a></div>',
+			works: '<b>E-mail:</b> <div><a href="mailto:office@belingo.by">office@belingo.by</a></div>'
+		}
+	],[
+		{lat: 52.0888713, lng: 23.7029225}, //coordinates of marker
+		{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
+		pinMap,
+		13,
+		{
+			title: 'Брест - Центр страховых услуг ЗСАО "Ингосстрах"',
+			address: '<b>Адрес:</b> <div>224013 г. Брест,<br> бульвар Космонавтов, 120</div>',
+			phone: '<b>Тел.:</b> <div><a href="tel:+375162220222">+375 16 222-02-22</a></div>',
+			works: '<b>E-mail:</b> <div><a href="mailto:brest@belingo.by">brest@belingo.by</a></div>'
+		}
+	],[
+		{lat: 55.1798387, lng: 30.2022314}, //coordinates of marker
+		{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
+		pinMap,
+		13,
+		{
+			title: 'Витебск - Центр страховых услуг ЗСАО "Ингосстрах"',
+			address: '<b>Адрес:</b> <div>210015 г. Витебск,<br> пр. Черняховского, 8а,<br> комната 103</div>',
+			phone: '<b>Тел.:</b> <div><a href="tel:+375447877164">+375 44 787-71-64</a></div>',
+			works: '<b>E-mail:</b> <div><a href="mailto:vitebsk@belingo.by">vitebsk@belingo.by</a></div>'
+		}
+	],[
+		{lat: 53.6819085, lng: 23.8290566}, //coordinates of marker
+		{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
+		pinMap,
+		13,
+		{
+			title: 'Гродно - Центр страховых услуг ЗСАО "Ингосстрах"',
+			address: '<b>Адрес:</b> <div>230023 г. Гродно,<br> ул. Малая Троицкая, 21</div>',
+			phone: '<b>Тел.:</b> <div><a href="tel:+375152771909">+375 15 277-19-09</a></div>',
+			works: '<b>E-mail:</b> <div><a href="mailto:grodno@belingo.by">grodno@belingo.by</a></div>'
+		}
+	],[
+		{lat: 53.8952585, lng: 30.3333077}, //coordinates of marker
+		{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
+		pinMap,
+		13,
+		{
+			title: 'Могилев - Центр страховых услуг ЗСАО "Ингосстрах"',
+			address: '<b>Адрес:</b> <div>212030 г. Могилев,<br> ул. Ленинская, 9</div>',
+			phone: '<b>Тел.:</b> <div><a href="tel:+375222222200">+375 22 222-22-00</a></div>',
+			works: '<b>E-mail:</b> <div><a href="mailto:mogilev@belingo.by">mogilev@belingo.by</a></div>'
+		}
+	]
+];
+
+function contactsMap(){
+	if (!$('#contacts-map').length) return false;
+
+	function mapCenter(index){
+		var localObject = localObjects[index];
+
+		return{
+			lat: localObject[0].lat + localObject[1].latBias,
+			lng: localObject[0].lng + localObject[1].lngBias
+		};
+	}
+
+	var markers = [],
+		elementById = [
+			document.getElementById('contacts-map')
+		];
+
+	pinMap['anchor'] = new google.maps.Point(300,830);
+	pinMap['scale'] = 0.07;
+
+	var mapOptions = {
+		zoom: localObjects[0][3],
+		center: mapCenter(0),
+		// styles: styleMap,
+		mapTypeControl: false,
+		scaleControl: false,
+		scrollwheel: false
+	};
+
+	var map0 = new google.maps.Map(elementById[0], mapOptions);
+
+	addMarker(0, map0);
+
+	/*aligned after resize*/
+	var resizeTimer0;
+	$(window).on('resize', function () {
+		clearTimeout(resizeTimer0);
+		resizeTimer0 = setTimeout(function () {
+			moveToLocation(0, map0);
+		}, 500);
+	});
+
+	/*move to location*/
+	function moveToLocation(index, map){
+		var object = localObjects[index];
+		var center = new google.maps.LatLng(mapCenter(index));
+		map.panTo(center);
+		map.setZoom(object[3]);
+	}
+
+	// var infoWindow = new google.maps.InfoWindow({
+	// 	maxWidth: 220
+	// });
+
+	var mapMarkerIndex, currentMapMarkerIndex = 0,
+		indexAnchor = 0;
+
+	$('.js-contacts-anchor').on('click', function(e) {
+		e.preventDefault();
+
+		var $this = $(this);
+
+		mapMarkerIndex = $this.index();
+
+		if (mapMarkerIndex === currentMapMarkerIndex) return false;
+
+		indexAnchor = $this.data('location');
+		deleteMarkers();
+		moveToLocation( indexAnchor, map0 );
+		addMarker(indexAnchor, map0);
+
+		currentMapMarkerIndex = mapMarkerIndex;
+	});
+
+	var mapIsExpand = false;
+
+	$('.js-map-expand').on('click', function (e) {
+
+		$(this)
+			.toggleClass('active', !mapIsExpand)
+			.parent()
+			.toggleClass('active', !mapIsExpand);
+
+		mapIsExpand = !mapIsExpand;
+
+		e.preventDefault();
+
+		setTimeout(function () {
+			deleteMarkers();
+			moveToLocation( indexAnchor, map0 );
+			addMarker(indexAnchor, map0);
+		}, 2000)
+	});
+
+	function addMarker(index,map) {
+		var object = localObjects[index];
+
+		var marker = new google.maps.Marker({
+			position: object[0],
+			map: map,
+			icon: object[2],
+			title: object[4].title,
+			animation: google.maps.Animation.DROP
+		});
+
+		markers.push(marker);
+
+		// function onMarkerClick() {
+		// 	var marker = this;
+		//
+		// 	infoWindow.setContent(
+		// 		'<div class="map-popup">' +
+		// 		'<h4>'+object[4].title+'</h4>' +
+		// 		'<div class="map-popup__list">' +
+		// 		'<div class="map-popup__row">'+object[4].address+'</div>' +
+		// 		'<div class="map-popup__row">'+object[4].phone+'</div>' +
+		// 		'<div class="map-popup__row">'+object[4].works+'</div>' +
+		// 		'</div>' +
+		// 		'</div>'
+		// 	);
+		//
+		// 	infoWindow.close();
+		//
+		// 	infoWindow.open(map, marker);
+		// }
+
+		// map.addListener('click', function () {
+		// 	infoWindow.close();
+		// });
+
+		// marker.addListener('click', onMarkerClick);
+	}
+
+	function setMapOnAll(map) {
+		for (var i = 0; i < markers.length; i++) {
+			markers[i].setMap(map);
+		}
+	}
+
+	function deleteMarkers() {
+		setMapOnAll(null);
+		//markers = [];
+	}
+}
+/*map init end*/
+
+/**
+ * contacts switcher
+ * */
+function contactsSwitcher() {
+	// external js:
+	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
+	// 2) resizeByWidth (resize only width);
+
+	var $main = $('.main');
+
+	if($main.length){
+		var $anchor = $('.js-contacts-anchor'),
+			$container = $('.js-contacts-container'),
+			$content = $('.js-contacts-content'),
+			// $thumb = $('.js-tumbler'),
+			activeClass = 'active',
+			animationSpeed = 0.3,
+			animationHeightSpeed = 0.15;
+
+		$.each($main, function () {
+			var $this = $(this),
+				$thisAnchor = $this.find($anchor),
+				$thisContainer = $this.find($container),
+				$thisContent = $this.find($content),
+				// $thisThumb = $this.find($thumb),
+				// dataPrevThumb = $thisThumb.prev().find($anchor).data('for'),
+				// dataNextThumb = $thisThumb.next().find($anchor).data('for'),
+				initialDataAtr = 'contacts-minsk',
+				activeDataAtr = false;
+
+			// prepare traffic content
+			function prepareTrafficContent() {
+				$thisContainer.css({
+					'display': 'block',
+					'position': 'relative',
+					'overflow': 'hidden'
+				});
+
+				$thisContent.css({
+					'display': 'block',
+					'position': 'absolute',
+					'left': 0,
+					'right': 0,
+					'width': '100%',
+					'z-index': -1
+				});
+
+				switchContent();
+			}
+
+			prepareTrafficContent();
+
+			// toggle content
+			$thisAnchor.on('click', function (e) {
+				e.preventDefault();
+
+				var $cur = $(this),
+					dataFor = $cur.data('for');
+
+				scrollToAnchors.call(this);
+
+				if (activeDataAtr === dataFor) return false;
+
+				initialDataAtr = dataFor;
+
+				switchContent();
+			});
+
+			// thumb content
+			// $thumb.on('click', function (e) {
+			// 	e.preventDefault();
+			//
+			// 	activeDataAtr = false;
+			//
+			// 	initialDataAtr = (initialDataAtr === dataPrevThumb) ? dataNextThumb : dataPrevThumb;
+			//
+			// 	switchContent();
+			// });
+
+			// switch content
+			function switchContent() {
+				toggleContent();
+				changeHeightContainer();
+				toggleActiveClass();
+			}
+
+			// show active content and hide other
+			function toggleContent() {
+				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
+
+				TweenMax.set($thisContent, {
+					autoAlpha: 0,
+					'z-index': -1
+				});
+
+				TweenMax.to($initialContent, animationSpeed, {
+					autoAlpha: 1,
+					onComplete: function () {
+						$initialContent.css('z-index', 2);
+					}
+				});
+			}
+
+			// change container's height
+			function changeHeightContainer() {
+				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
+
+				TweenMax.to($thisContainer, animationHeightSpeed, {
+					'height': $initialContent.outerHeight()
+				});
+			}
+
+			// change container's height on resize window width
+			$(window).on('resizeByWidth', function () {
+				changeHeightContainer();
+			});
+
+			// toggle class active
+			function toggleActiveClass(){
+				$thisAnchor.removeClass(activeClass);
+				$thisContent.removeClass(activeClass);
+
+				// toggleStateThumb();
+
+				if (initialDataAtr !== activeDataAtr) {
+
+					activeDataAtr = initialDataAtr;
+
+					$thisAnchor.filter('[data-for="' + initialDataAtr + '"]').addClass(activeClass);
+					$thisContent.filter('[data-id="' + initialDataAtr + '"]').addClass(activeClass);
+
+					return false;
+				}
+
+				activeDataAtr = false;
+			}
+
+			function scrollToAnchors() {
+				$('html,body').stop().animate({scrollTop: $(this).parent().offset().top - $('.header').outerHeight()}, 300);
+			}
+
+			// toggle thumb's state
+			// function toggleStateThumb() {
+			// 	$thisThumb.addClass(activeClass);
+			//
+			// 	if (initialDataAtr == dataPrevThumb) {
+			// 		$thisThumb.removeClass(activeClass)
+			// 	}
+			// }
+		});
+	}
+}
+/* contacts switcher end */
+
 
 /**!
  * footer at bottom
@@ -1021,8 +1351,6 @@ $(document).ready(function(){
 	printShow();
 	toggleSidebar();
 	toggleAside();
-	headerShow();
-	pageIsScrolled();
 	popupInitial();
 	menuAccordionInit();
 	languageEvents();
@@ -1032,6 +1360,8 @@ $(document).ready(function(){
 		scrollToSection();
 	}
 	showFormSearch();
+	contactsMap();
+	contactsSwitcher();
 
 	footerBottom();
 	stickyLayout();

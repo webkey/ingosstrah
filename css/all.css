@@ -24,7 +24,7 @@
 	overflow: hidden!important;
 }
 body{
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 18px;
 	line-height: 24px;
 	height: 100%;
@@ -39,33 +39,33 @@ h1, h2, h3, h4, h5, h6{
 }
 h1,
 .article-title h2{
-	font-family: 'helvetica-neue-cyr-thin', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-thin', sans-serif;
 	font-size: 36px;
 	line-height: 48px;
 	padding: 0 0 40px;
 	overflow: hidden;
 }
 h2{
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 30px;
 	line-height: 40px;
 	padding: 0 0 20px;
 }
 h3{
-	font-family: 'helvetica-neue-cyr-roman', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
 	font-size: 24px;
 	line-height: 32px;
 	padding: 0 0 20px;
 }
 h4{
-	font-family: 'helvetica-neue-cyr-roman', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
 	font-size: 18px;
 	line-height: 24px;
 	padding: 0 0 20px;
 }
 h5,
 h6{
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 14px;
 	line-height: 19px;
 	color: #666;
@@ -114,11 +114,11 @@ mark {
 .align-center{ text-align: center; }
 .nobr{ white-space: nowrap; }
 b, strong, th{
-	font-family: 'helvetica-neue-cyr-medium', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-medium', sans-serif;
 	font-weight: normal;
 }
 i, em{
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-style: normal;
 }
 i b,
@@ -129,7 +129,7 @@ b i,
 b em,
 strong i,
 strong em{
-	font-family: 'helvetica-neue-cyr-medium-italic', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-medium-italic', sans-serif;
 	font-weight: normal;
 	font-style: normal;
 }
@@ -170,13 +170,14 @@ strong em{
 	box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
 }
 
-.sidebar{
-	width: 280px;
-}
 .aside,
 .footer-adr{
 	width: 280px;
 	margin-left: -280px;
+}
+.sidebar{
+	width: 280px;
+	padding-top: 80px;
 }
 
 .layout{
@@ -249,7 +250,7 @@ strong em{
 
 /*btn-default*/
 .btn-default{
-	font-family: 'helvetica-neue-cyr-bold', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-bold', sans-serif;
 	font-size: 16px;
 	line-height: 20px;
 	color: #fff;
@@ -265,6 +266,18 @@ strong em{
 	-webkit-transform: scale(0.9, 0.9);
 	-ms-transform: scale(0.9, 0.9);
 	transform: scale(0.9, 0.9);
+}
+
+.btn-callback{
+	padding-left: 60px;
+	background-image: url(../img/depict-email-2x.png);
+	background-position: 20px 50%;
+	background-repeat: no-repeat;
+	-webkit-background-size: 20px;
+	background-size: 20px;
+}
+.no-backgroundsize .btn-callback{
+	background-image: url(../img/depict-email.png);
 }
 /*btn-default end*/
 /*btn end*/
@@ -283,6 +296,13 @@ strong em{
 .user-content ul+h5,
 .user-content ol+h5{
 	padding-top: 10px;
+}
+
+.note{
+	font-size: 14px;
+	line-height: 21px;
+	color: #666;
+	padding-bottom: 50px;
 }
 
 /*list*/
@@ -330,7 +350,7 @@ strong em{
 	display: inline-block;
 	min-width: 20px;
 	height: 20px;
-	font-family: 'helvetica-neue-cyr-medium', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-medium', sans-serif;
 	font-size: 14px;
 	line-height: 20px;
 	color: #fff;
@@ -374,14 +394,40 @@ table{
 }
 table td,
 table th{
-	font: 14px/19px 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font: 14px/19px 'helvetica-neue-cyr-light', sans-serif;
 	color: #666;
 	border: 1px solid #ccc;
-	padding: 9px 20px 10px;
+	padding: 15px 20px 16px;
+	box-sizing: border-box;
 }
 table th{
-	font-family: 'helvetica-neue-cyr-roman', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
 	color: #000;
+}
+td p:last-child,
+td ul:last-child,
+td ol:last-child{
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+td ul{
+	display: inline-block;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+td ul li,
+td ul li:first-child,
+.user-content td ul li,
+.user-content td ul li:first-child{
+	padding: 0;
+	display: inline-block;
+}
+td ul li:before,
+td ul li:first-child:before,
+.user-content td ul li:before,
+.user-content td ul li:first-child:before{
+	content: none;
 }
 /*default table end*/
 
@@ -402,7 +448,7 @@ table th{
 }
 .user-content .tbl td,
 .user-content .tbl th{
-	font: 14px/19px 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font: 14px/19px 'helvetica-neue-cyr-light', sans-serif;
 	color: #666;
 	background-color: #fff;
 	border: 1px solid #ccc;
@@ -412,7 +458,7 @@ table th{
 .user-content .tbl thead td,
 .user-content .tbl tfoot td,
 .user-content .tbl td:first-child{
-	font-family: 'helvetica-neue-cyr-roman', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
 	text-align: center;
 	color: #000;
 	background: #f3f3f3;
@@ -437,7 +483,7 @@ table th{
 	position: relative;
 	margin: 0;
 	padding: 0 0 0 45px;
-	font-family: 'helvetica-neue-cyr-roman', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
 	color: #124989;
 }
 .user-content blockquote q:before,
@@ -457,7 +503,7 @@ table th{
 	text-align: right;
 	display: block;
 	margin-left: auto;
-	font-family: 'helvetica-neue-cyr-medium-italic', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-medium-italic', sans-serif;
 	color: #333;
 	padding-top: 24px;
 }
@@ -501,7 +547,7 @@ input[type="search"],
 textarea{
 	display: block;
 	color: #000;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 16px;
 	line-height: 24px;
 	letter-spacing: normal;
@@ -600,7 +646,7 @@ textarea.error.placeholder{ color: #ca0503; opacity: 1; }
 .error-note{
 	display: block;
 	position: relative;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 12px;
 	line-height: 18px;
 	padding-top: 4px;
@@ -643,7 +689,7 @@ input[type="checkbox"] + label,
 input[type="radio"] + label {
 	display: inline-block;
 	vertical-align: top;
-	font: 16px/24px 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font: 16px/24px 'helvetica-neue-cyr-light', sans-serif;
 	color: #1a1a1a;
 	text-transform: none;
 	cursor: pointer;
@@ -997,7 +1043,7 @@ label,
 .select select,
 .select button.cselect,
 .select button.cselect .select-inner{
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 16px;
 	line-height: 24px;
 	text-transform: none;
@@ -1105,7 +1151,7 @@ div.cselect .ui-multiselect-checkboxes label input {
 div.cselect .ui-multiselect-checkboxes label {
 	display:block;
 	cursor:pointer;
-	font: 16px/24px 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font: 16px/24px 'helvetica-neue-cyr-light', sans-serif;
 	text-transform: none;
 	color: #000;
 	font-weight: normal;
@@ -1179,7 +1225,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 .file__title{
 	padding: 0 0 10px;
-	font-family: 'helvetica-neue-cyr-roman', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
 	font-size: 18px;
 	line-height: 24px;
 	color: #124989;
@@ -1438,7 +1484,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 .inline-popup__title{
 	display: block;
-	font-family: 'helvetica-neue-cyr-roman', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
 	font-weight: normal;
 	font-size: 24px;
 	line-height: 30px;
@@ -1474,7 +1520,7 @@ div.cselect .ui-multiselect-checkboxes input[type="radio"] + span:after{ content
 }
 .form__title{
 	display: block;
-	font-family: 'helvetica-neue-cyr-roman', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
 	font-size: 24px;
 	line-height: 30px;
 	color: #666;
@@ -1793,7 +1839,7 @@ label,
 	display: block;
 	position: relative;
 	height: 100%;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 21px;
 	color: #000;
 	text-decoration: none;
@@ -2188,7 +2234,7 @@ label,
 }
 
 .login a{
-	font-family: 'helvetica-neue-cyr-medium', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-medium', sans-serif;
 	line-height: 20px;
 	color: #124989;
 	text-decoration: none;
@@ -2312,7 +2358,7 @@ label,
 	display: block;
 	height: 100%;
 	text-decoration: none;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	text-align: center;
 	color: #666;
 	padding: 16px 30px 0;
@@ -2376,7 +2422,7 @@ label,
 }
 .btn-menu .btn-menu-frame span{
 	display: block;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 14px;
 	line-height: 18px;
 	letter-spacing: 0.05em;
@@ -2571,7 +2617,7 @@ label,
 	padding: 0 0 50px;
 }
 .section-title h3{
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 36px;
 	line-height: 42px;
 	color: #000;
@@ -2661,7 +2707,7 @@ label,
 	box-sizing: border-box;
 }
 .visual__text{
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 36px;
 	line-height: 42px;
 	color: #fff;
@@ -2709,7 +2755,7 @@ label,
 	padding: 36px 15px 0;
 }
 .graph-count .large-text{
-	font-family: 'helvetica-neue-cyr-thin', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-thin', sans-serif;
 	font-size: 34px;
 	position: relative;
 	top: 5px;
@@ -2798,7 +2844,7 @@ a.catalog-item__inner{
 }
 .catalog-item__title{
 	display: block;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 24px;
 	line-height: 26px;
 	color: #124989;
@@ -2943,7 +2989,7 @@ a.catalog-item__inner{
 }
 .news-item__date > strong{
 	display: block;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 30px;
 	line-height: 32px;
 	margin: 0 0 -7px;
@@ -3013,7 +3059,7 @@ a.catalog-item__inner{
 }
 .article-title__date > strong{
 	display: block;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 30px;
 	line-height: 32px;
 	margin: 0 0 -7px;
@@ -3128,6 +3174,223 @@ ol + .article-images{
 }
 /*article options end*/
 /**article end**/
+
+/*contacts thumb*/
+.contacts-thumb{
+	padding-bottom: 50px;
+}
+.contacts-thumb__label{
+	padding: 0 0 20px;
+	display: none;
+}
+.contacts-thumb__list{
+	position: relative;
+	line-height: 48px;
+
+	font-size: 0;
+	letter-spacing: -4px;
+}
+.contacts-thumb__list a{
+	display: inline-block;
+	vertical-align: top;
+	font-size: 24px;
+	letter-spacing: normal;
+	text-decoration: none;
+	color: #124989;
+	margin-right: 40px;
+	margin-bottom: 20px;
+	-webkit-transition-property: color;
+	transition-property: color;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+}
+.contacts-thumb__list a.active{
+	color: #666;
+}
+.contacts-thumb__list a > span{
+	border-bottom: 1px dotted #124989;
+	-webkit-transition-property: border;
+	transition-property: border;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+}
+.desktop .contacts-thumb__list a:hover > span,
+.contacts-thumb__list a.active > span{
+	border-color: transparent;
+}
+/*contacts thumb end*/
+
+/*contacts map*/
+.contacts-map-container{
+	position: relative;
+	margin-left: -40px;
+	margin-right: -40px;
+	margin-bottom: 45px;
+	height: 210px;
+	z-index: 2;
+}
+.contacts-map-container.active{
+	height: 410px;
+}
+.contacts-map{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+}
+.map-expand{
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: rgba(18, 73, 137, 0.80);
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+.map-expand > span,
+.map-expand > span:before{
+	border: solid #fff;
+}
+.map-expand > span{
+	display: block;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 7px;
+	height: 7px;
+	border-width: 1px 1px 0 0;
+}
+.map-expand > span:first-child{
+	right: auto;
+	top: auto;
+	bottom: 10px;
+	left: 10px;
+	border-width: 0 0 1px 1px;
+}
+.desktop .map-expand:hover span{
+	-webkit-transform: translate(2px, -2px);
+	-ms-transform: translate(2px, -2px);
+	transform: translate(2px, -2px);
+}
+.desktop .map-expand:hover span:first-child{
+	-webkit-transform: translate(-2px, 2px);
+	-ms-transform: translate(-2px, 2px);
+	transform: translate(-2px, 2px);
+}
+.map-expand.active > span{
+	-webkit-transform: rotate(180deg);
+	-ms-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+.desktop .map-expand.active:hover span{
+	-webkit-transform: rotate(180deg) translate(2px, -2px);
+	-ms-transform: rotate(180deg) translate(2px, -2px);
+	transform: rotate(180deg) translate(2px, -2px);
+}
+.desktop .map-expand.active:hover span:first-child{
+	-webkit-transform: rotate(180deg) translate(-2px, 2px);
+	-ms-transform: rotate(180deg) translate(-2px, 2px);
+	transform: rotate(180deg) translate(-2px, 2px);
+}
+.map-expand > span:before{
+	content: '';
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	height: 0;
+	width: 9px;
+	margin: -1px 0 0 -5px;
+	border-width: 1px 0 0;
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+/*contacts map end*/
+
+/*contacts info*/
+.contacts-info-wrap{
+	display: none;
+	margin-bottom: 30px;
+}
+.no-js .contacts-info-wrap{
+	display: block;
+}
+.contacts-info:before,
+.contacts-info:after { content: ""; display: table; }
+.contacts-info:after { clear: both; }
+.contacts-info__main,
+.contacts-info__footer{
+	min-height: 10px;
+	float: left;
+	width: 69.98%;
+	padding-right: 30px;
+	box-sizing: border-box;
+}
+.contacts-info__aside{
+	float: right;
+	width: 29.98%;
+	box-sizing: border-box;
+}
+.contacts-info__title{
+	display: block;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
+	font-size: 18px;
+	line-height: 24px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #000;
+	padding: 0 0 30px;
+}
+.contacts-info__subtitle,
+.table-title{
+	display: block;
+	font-family: 'helvetica-neue-cyr-bold', sans-serif;
+	font-size: 14px;
+	line-height: 21px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #000;
+	padding: 0 0 8px;
+}
+.contacts-info__widget{
+	padding: 0 0 30px;
+	font-size: 16px;
+	line-height: 24px;
+	color: #666;
+}
+.contacts-info__widget p:last-child,
+.contacts-info__widget ul:last-child{
+	padding-bottom: 0;
+}
+.dl,
+.user-content .dl{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.dl li,
+.user-content .dl li,
+.dl li:first-child,
+.user-content .dl li:first-child{
+	padding: 0;
+}
+.dl li:before,
+.user-content .dl li:before,
+.dl li:first-child:before,
+.user-content .dl li:first-child:before{
+	content: none;
+}
+.dl .dt,
+.dl .dd{
+	display: inline-block;
+	vertical-align: top;
+}
+.dl .dd a{
+	display: inline-block;
+}
+
+/*contacts info end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/
@@ -3137,7 +3400,6 @@ ol + .article-images{
 	position: fixed;
 	left: 0;
 	top: 0;
-	padding-top: 80px;
 	height: 100%;
 	box-sizing: border-box;
 }
@@ -3177,6 +3439,10 @@ ol + .article-images{
 	position: relative;
 	overflow: auto;
 	height: 100%;
+}
+.desktop .sidebar-holder::-webkit-scrollbar{
+	width: 0;
+	background: none;
 }
 
 /*menu*/
@@ -3293,7 +3559,7 @@ li.has-drop.current>.menu-sub-drop:after,
 	border-bottom: 1px solid #275892;
 }
 .menu__list > li > a{
-	font-family: 'helvetica-neue-cyr-bold', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-bold', sans-serif;
 	font-size: 14px;
 	line-height: 20px;
 	text-transform: uppercase;
@@ -3315,7 +3581,7 @@ li.has-drop.current>.menu-sub-drop:after,
 }
 .menu-drop__list>li > a{
 	padding-right: 25px;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 16px;
 	line-height: 20px;
 	background: #124989;
@@ -3431,7 +3697,7 @@ li.has-drop.current>.menu-sub-drop:after,
 }
 .sidebar-widget__title{
 	display: block;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 12px;
 	line-height: 18px;
 	letter-spacing: 0.05em;
@@ -3442,14 +3708,14 @@ li.has-drop.current>.menu-sub-drop:after,
 	padding-top: 20px;
 }
 .sidebar-widget__text{
-	font-family: 'helvetica-neue-cyr-bold', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-bold', sans-serif;
 	font-size: 16px;
 	line-height: 22px;
 	padding-bottom: 20px;
 }
 .sidebar-widget__date{
 	display: block;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 14px;
 	line-height: 18px;
 }
@@ -3509,7 +3775,7 @@ a.aside-widget__inner{
 }
 .aside-widget__title{
 	display: block;
-	font-family: 'helvetica-neue-cyr-roman', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
 	font-size: 24px;
 	line-height: 30px;
 	color: #124989;
@@ -3567,7 +3833,7 @@ a.aside-widget__inner{
 }
 .adviser__title{
 	display: block;
-	font-family: 'helvetica-neue-cyr-roman', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
 	font-size: 24px;
 	line-height: 32px;
 	text-align: center;
@@ -3687,7 +3953,7 @@ a.aside-widget__inner{
 	width: 100%;
 	height: 0;
 	position: relative;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	color: #767676;
 	clear: both;
 	z-index: 5;
@@ -3756,7 +4022,7 @@ a.aside-widget__inner{
 .user-content .footer-nav__list,
 .footer-nav__title{
 	display: block;
-	font-family: 'helvetica-neue-cyr-roman', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
 	font-size: 18px;
 	line-height: 22px;
 	color: #124989;
@@ -3809,7 +4075,7 @@ a.aside-widget__inner{
 }
 .foot-adr__title{
 	display: block;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-size: 12px;
 	line-height: 22px;
 	text-transform: uppercase;
@@ -3817,7 +4083,7 @@ a.aside-widget__inner{
 }
 .footer-adr__address{
 	display: block;
-	font-family: 'helvetica-neue-cyr-light', Arial, Helvetica, sans-serif;
+	font-family: 'helvetica-neue-cyr-light', sans-serif;
 	font-style: normal;
 	font-size: 16px;
 	line-height: 20px;
