@@ -114,7 +114,9 @@
 .user{ }
 
 /*search form*/
-.show-search{ }
+.search-form-opened .search-form {
+	width: 502px;
+}
 
 /*search btn submit*/
 /*search btn submit end*/

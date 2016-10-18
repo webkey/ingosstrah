@@ -132,7 +132,9 @@ h1{
 .user{ }
 
 /*search form*/
-.show-search{ }
+.search-form-opened .search-form {
+	width: 400px;
+}
 
 /*search btn submit*/
 /*search btn submit end*/
