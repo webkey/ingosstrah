@@ -899,71 +899,9 @@ function equalHeightInit() {
  * */
 // var styleMap = [{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#d3d3d3"}]},{"featureType":"transit","stylers":[{"color":"#808080"},{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"on"},{"color":"#b3b3b3"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"weight":1.8}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"color":"#d7d7d7"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ebebeb"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#a7a7a7"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#efefef"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#696969"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"color":"#737373"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#d6d6d6"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"color":"#dadada"}]}];
 
-var pinMap = {
-	path: "M572.8,182.1c-15.2-35.3-36.6-67.1-63.6-94.7c-27.7-27.7-59.5-49.1-94.7-63.6C377.8,8.5,338.4,0.2,298.3,0.2 s-79.5,7.6-116.2,23.5C146.9,39,115.1,60.4,87.4,87.4c-27.7,27.7-49.1,59.5-63.6,94.7C8.6,218.7,0.3,258.1,0.3,298.2 C0.3,366,48,474.5,142.1,621.8c69.1,107.9,139,197.7,139.7,199.1l15.9,20.7l15.9-20.7c0.7-0.7,70.5-91.3,139.7-199.1 c94-147.3,141.7-255.8,141.7-323.6C595.6,257.4,588,218.7,572.8,182.1z M298.3,399.9c-63.6,0-115.5-51.9-115.5-115.5 s51.9-115.5,115.5-115.5s115.5,51.9,115.5,115.5C413.8,348.7,361.9,399.9,298.3,399.9z",
-	fillColor: '#124989',
-	fillOpacity: 1,
-	strokeWeight: 0
-};
-
-var localObjects = [
-	[
-		{lat: 53.8970355, lng: 27.5413969}, //coordinates of marker
-		{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-		pinMap,
-		13,
-		{
-			title: 'Центральный офис',
-			address: '<b>Адрес:</b> <div>Республика Беларусь, 220050<br> г. Минск, ул. Мясникова, 40</div>',
-			phone: '<b>Тел.:</b> <div><a href="tel:+375172035878">+375 17 203-58-78</a></div>',
-			works: '<b>E-mail:</b> <div><a href="mailto:office@belingo.by">office@belingo.by</a></div>'
-		}
-	],[
-		{lat: 52.0888713, lng: 23.7029225}, //coordinates of marker
-		{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-		pinMap,
-		13,
-		{
-			title: 'Брест - Центр страховых услуг ЗСАО "Ингосстрах"',
-			address: '<b>Адрес:</b> <div>224013 г. Брест,<br> бульвар Космонавтов, 120</div>',
-			phone: '<b>Тел.:</b> <div><a href="tel:+375162220222">+375 16 222-02-22</a></div>',
-			works: '<b>E-mail:</b> <div><a href="mailto:brest@belingo.by">brest@belingo.by</a></div>'
-		}
-	],[
-		{lat: 55.1798387, lng: 30.2022314}, //coordinates of marker
-		{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-		pinMap,
-		13,
-		{
-			title: 'Витебск - Центр страховых услуг ЗСАО "Ингосстрах"',
-			address: '<b>Адрес:</b> <div>210015 г. Витебск,<br> пр. Черняховского, 8а,<br> комната 103</div>',
-			phone: '<b>Тел.:</b> <div><a href="tel:+375447877164">+375 44 787-71-64</a></div>',
-			works: '<b>E-mail:</b> <div><a href="mailto:vitebsk@belingo.by">vitebsk@belingo.by</a></div>'
-		}
-	],[
-		{lat: 53.6819085, lng: 23.8290566}, //coordinates of marker
-		{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-		pinMap,
-		13,
-		{
-			title: 'Гродно - Центр страховых услуг ЗСАО "Ингосстрах"',
-			address: '<b>Адрес:</b> <div>230023 г. Гродно,<br> ул. Малая Троицкая, 21</div>',
-			phone: '<b>Тел.:</b> <div><a href="tel:+375152771909">+375 15 277-19-09</a></div>',
-			works: '<b>E-mail:</b> <div><a href="mailto:grodno@belingo.by">grodno@belingo.by</a></div>'
-		}
-	],[
-		{lat: 53.8952585, lng: 30.3333077}, //coordinates of marker
-		{latBias: 0.002, lngBias: 0}, //bias coordinates for center map
-		pinMap,
-		13,
-		{
-			title: 'Могилев - Центр страховых услуг ЗСАО "Ингосстрах"',
-			address: '<b>Адрес:</b> <div>212030 г. Могилев,<br> ул. Ленинская, 9</div>',
-			phone: '<b>Тел.:</b> <div><a href="tel:+375222222200">+375 22 222-22-00</a></div>',
-			works: '<b>E-mail:</b> <div><a href="mailto:mogilev@belingo.by">mogilev@belingo.by</a></div>'
-		}
-	]
-];
+// inline script
+// var pinMap;
+// var localObjects;
 
 function contactsMap(){
 	if (!$('#contacts-map').length) return false;

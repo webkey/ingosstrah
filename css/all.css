@@ -3322,14 +3322,16 @@ ol + .article-images{
 /*contacts info*/
 .contacts-info-wrap{
 	display: none;
-	margin-bottom: 40px;
 }
 .no-js .contacts-info-wrap{
 	display: block;
 }
-.contacts-info:before,
-.contacts-info:after { content: ""; display: table; }
-.contacts-info:after { clear: both; }
+.contact-info-desk{
+	margin-bottom: 40px;
+}
+.contact-info-desk:before,
+.contact-info-desk:after { content: ""; display: table; }
+.contact-info-desk:after { clear: both; }
 .contacts-info__main,
 .contacts-info__footer{
 	min-height: 10px;
