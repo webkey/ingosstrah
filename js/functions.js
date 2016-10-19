@@ -1245,7 +1245,7 @@ function contactsSwitcher() {
 			}
 
 			function scrollToAnchors() {
-				$('html,body').stop().animate({scrollTop: $(this).parent().offset().top - $('.header').outerHeight()}, 300);
+				$('html,body').stop().animate({scrollTop: $(this).parent().offset().top - $('.header').outerHeight() - 20}, 300);
 			}
 
 			// toggle thumb's state
