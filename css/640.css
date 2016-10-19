@@ -152,15 +152,6 @@ h3 {
 .callback-form .input-holder {
 	margin-left: 0;
 }
-.callback-form .form-footer {
-	padding-top: 0;
-	padding-left: 0;
-}
-.callback-form .form-buttons {
-	float: none;
-	padding: 0 0 30px;
-	text-align: center;
-}
 /*callback form end*/
 
 /*login form*/
@@ -353,6 +344,24 @@ h3 {
 }
 /*news list end*/
 /**news end**/
+
+/*contacts thumb*/
+.contacts-thumb__list a {
+	font-size: 20px;
+	margin-right: 30px;
+	margin-bottom: 16px;
+}
+/*contacts thumb end*/
+
+/*contacts map*/
+.contacts-map-wrap.active,
+.contacts-map{
+	height: 400px;
+}
+.contacts-map{
+	margin-top: -200px;
+}
+/*contacts map end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/

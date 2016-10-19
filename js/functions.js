@@ -823,6 +823,21 @@ function scrollToSection() {
 }
 /*scroll to section end*/
 
+/**
+ * scroll to form
+ * */
+function scrollToForm() {
+	$(window).on("load",function(){
+
+		/* Page Scroll to id fn call */
+		$("a.btn-callback").mPageScroll2id({
+			scrollSpeed: 500,
+			offset: '.header'
+		});
+	});
+}
+/*scroll to section end*/
+
 /*show form search */
 function showFormSearch() {
 	var $searchForm = $('.js-search-form');
@@ -1028,6 +1043,8 @@ function contactsMap(){
 
 	$('.js-map-expand').on('click', function (e) {
 
+		e.preventDefault();
+
 		$(this)
 			.toggleClass('active', !mapIsExpand)
 			.parent()
@@ -1035,13 +1052,7 @@ function contactsMap(){
 
 		mapIsExpand = !mapIsExpand;
 
-		e.preventDefault();
-
-		setTimeout(function () {
-			deleteMarkers();
-			moveToLocation( indexAnchor, map0 );
-			addMarker(indexAnchor, map0);
-		}, 2000)
+		// moveToLocation( indexAnchor, map0 );
 	});
 
 	function addMarker(index,map) {
@@ -1359,6 +1370,7 @@ $(document).ready(function(){
 		// pagesSwitcher();
 		scrollToSection();
 	}
+	scrollToForm();
 	showFormSearch();
 	contactsMap();
 	contactsSwitcher();

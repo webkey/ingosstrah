@@ -3129,7 +3129,7 @@ ol + .article-images{
 	letter-spacing: 0.05em;
 	text-decoration: none;
 	color: #124989;
-	background: #f3f3f3f;
+	background: #f3f3f3;
 	-webkit-transition-property: background;
 	transition-property: background;
 	-webkit-transition-duration: 0.4s;
@@ -3185,7 +3185,7 @@ ol + .article-images{
 }
 .contacts-thumb__list{
 	position: relative;
-	line-height: 48px;
+	line-height: 32px;
 
 	font-size: 0;
 	letter-spacing: -4px;
@@ -3221,23 +3221,30 @@ ol + .article-images{
 /*contacts thumb end*/
 
 /*contacts map*/
-.contacts-map-container{
+.contacts-map-wrap{
 	position: relative;
+	overflow: hidden;
 	margin-left: -40px;
 	margin-right: -40px;
 	margin-bottom: 45px;
 	height: 210px;
 	z-index: 2;
+	-webkit-transition-property: height;
+	transition-property: height;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
 }
-.contacts-map-container.active{
-	height: 410px;
+.contacts-map-wrap.active{
+	height: 500px;
 }
 .contacts-map{
 	position: absolute;
 	left: 0;
-	top: 0;
-	height: 100%;
+	top: 50%;
+	margin-top: -250px;
+	height: 500px;
 	width: 100%;
+	background: #f3f3f3;
 }
 .map-expand{
 	position: absolute;
@@ -3284,14 +3291,14 @@ ol + .article-images{
 	transform: rotate(180deg);
 }
 .desktop .map-expand.active:hover span{
-	-webkit-transform: rotate(180deg) translate(2px, -2px);
-	-ms-transform: rotate(180deg) translate(2px, -2px);
-	transform: rotate(180deg) translate(2px, -2px);
-}
-.desktop .map-expand.active:hover span:first-child{
 	-webkit-transform: rotate(180deg) translate(-2px, 2px);
 	-ms-transform: rotate(180deg) translate(-2px, 2px);
 	transform: rotate(180deg) translate(-2px, 2px);
+}
+.desktop .map-expand.active:hover span:first-child{
+	-webkit-transform: rotate(180deg) translate(2px, -2px);
+	-ms-transform: rotate(180deg) translate(2px, -2px);
+	transform: rotate(180deg) translate(2px, -2px);
 }
 .map-expand > span:before{
 	content: '';
@@ -3306,12 +3313,16 @@ ol + .article-images{
 	-ms-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
+.gm-bundled-control{
+	bottom: 50% !important;
+	margin: 0 10px 0 0 !important;
+}
 /*contacts map end*/
 
 /*contacts info*/
 .contacts-info-wrap{
 	display: none;
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 }
 .no-js .contacts-info-wrap{
 	display: block;
@@ -3388,6 +3399,10 @@ ol + .article-images{
 }
 .dl .dd a{
 	display: inline-block;
+}
+
+.contacts-add table{
+	min-width: 640px;
 }
 
 /*contacts info end*/

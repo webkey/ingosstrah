@@ -79,6 +79,18 @@
 /*default form end*/
 
 /*callback form*/
+.callback-form .form-footer {
+	padding-top: 0;
+	padding-left: 0;
+}
+.callback-form .form-buttons {
+	float: none;
+	padding: 0 0 30px;
+	text-align: center;
+}
+.callback-form .form-note {
+	text-align: center;
+}
 /*callback form end*/
 
 /*login form*/
@@ -156,6 +168,23 @@
 
 /*catalog*/
 /*catalog end*/
+
+/*contacts thumb*/
+.contacts-thumb__list a {
+	font-size: 22px;
+	margin-right: 32px;
+}
+/*contacts thumb end*/
+
+/*contacts info*/
+.contacts-info__main,
+.contacts-info__footer,
+.contacts-info__aside{
+	float: none;
+	width: auto;
+	padding-right: 0;
+}
+/*contacts info end*/
 /*CONTENT end*/
 
 /*SIDEBAR*/
