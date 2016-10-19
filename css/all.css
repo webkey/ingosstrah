@@ -42,7 +42,7 @@ h1,
 	font-family: 'helvetica-neue-cyr-thin', sans-serif;
 	font-size: 36px;
 	line-height: 48px;
-	padding: 0 0 40px;
+	padding: 0 0 30px;
 	overflow: hidden;
 }
 h2{
@@ -2543,7 +2543,7 @@ label,
 .breadcrumbs{
 	line-height: 24px;
 	color: #999;
-	padding: 0 0 50px;
+	padding: 0 0 30px;
 }
 .breadcrumbs-list,
 .user-content .breadcrumbs-list{
@@ -3177,7 +3177,7 @@ ol + .article-images{
 
 /*contacts thumb*/
 .contacts-thumb{
-	padding-bottom: 50px;
+	padding-bottom: 40px;
 }
 .contacts-thumb__label{
 	padding: 0 0 20px;
@@ -3198,7 +3198,7 @@ ol + .article-images{
 	text-decoration: none;
 	color: #124989;
 	margin-right: 40px;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	-webkit-transition-property: color;
 	transition-property: color;
 	-webkit-transition-duration: 0.4s;
