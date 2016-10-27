@@ -1,1 +1,9 @@
 @media only screen and (max-width: 479px){}
+
+/*footer nav*/
+.footer-nav__col{
+	float: none;
+	display: block;
+	width: auto;
+}
+/*footer nav end*/

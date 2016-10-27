@@ -351,7 +351,6 @@ function selectResize(){
 		self.showOverlay(false);
 
 		if ($btnMenu.is(':hidden') ) {
-			console.log('style reset');
 			$navContainer.attr('style', '');
 			return;
 		}
@@ -392,7 +391,6 @@ function selectResize(){
 		if (self.$btnMenu.is(':visible')) {
 			TweenMax.set($navContainer, {autoAlpha: 0, onComplete: function () {
 
-				console.log('prepareAnimation');
 				$navContainer.show(0);
 
 			}});
@@ -444,6 +442,7 @@ function toggleSidebar(){
 		navContainer: '.sidebar',
 		navMenuItem: '.menu__list li',
 		animationSpeed: 300,
+		animationSpeedOverlay: 100,
 		overlayAppend: '.main',
 		overlayBoolean: true,
 		overlayAlpha: 0.75
@@ -510,6 +509,7 @@ function toggleAside(){
 		navContainer: '.aside',
 		btnMenu: '.aside-opener-js',
 		animationSpeed: 300,
+		animationSpeedOverlay: 100,
 		animationType: 'rtl',
 		overlayAppend: '.main',
 		overlayBoolean: true,
@@ -718,17 +718,27 @@ function menuAccordionInit() {
  * drop language
  * */
 function languageEvents() {
+
 	$('.js-lang-open').on('click', function (e) {
 		e.preventDefault();
+
+		if ($('.search-form').length) {
+			$(document).trigger('closeSearchForm');
+		}
+		
 		$(this).closest('.lang').toggleClass('lang-opened');
+		
 		e.stopPropagation();
 	});
+
+	$(document).on('click closeDropLong', function () {
+		closeDropLong();
+	});
+
 	$('.lang-list').on('click', function (e) {
 		e.stopPropagation();
 	});
-	$(document).on('click', function () {
-		closeDropLong();
-	});
+
 	function closeDropLong() {
 		$('.lang').removeClass('lang-opened');
 	}
@@ -758,7 +768,7 @@ function commonSliderInit() {
 				speed: 150,
 				autoplay: true,
 				autoplaySpeed: 8000,
-				dots: false,
+				dots: true,
 				arrows: false,
 				fade: true,
 				focusOnSelect: true,
@@ -838,8 +848,8 @@ function scrollToForm() {
 }
 /*scroll to section end*/
 
-/*show form search */
-function showFormSearch() {
+/*toggle form search */
+function toggleFormSearch() {
 	var $searchForm = $('.js-search-form');
 	if (!$searchForm.length) {
 		return;
@@ -847,6 +857,10 @@ function showFormSearch() {
 
 	var $body = $('body');
 	var openedFormClass = 'search-form-opened';
+
+	$searchForm.on('click', function (e) {
+		e.stopPropagation();
+	});
 
 	$searchForm.on('click', '.js-search-close', function (e) {
 		e.preventDefault();
@@ -856,8 +870,17 @@ function showFormSearch() {
 		focusingSearchForm();
 	});
 
-	$searchForm.on('click', 'input:submit', function () {
+	$(document).on('click closeSearchForm', function () {
+		$body.removeClass(openedFormClass);
+	});
+
+	$searchForm.on('click', 'input:submit', function (e) {
 		if(!$body.hasClass(openedFormClass)){
+
+			if ($('.lang').length) {
+				$(document).trigger('closeDropLong');
+			}
+
 			$body.addClass(openedFormClass);
 
 			focusingSearchForm();
@@ -874,7 +897,7 @@ function showFormSearch() {
 		$searchForm.find('input[type="search"], input[type="text"]').trigger('focus');
 	}
 }
-/*show form search end*/
+/*toggle form search end*/
 
 /**!
  * equal height
@@ -1309,7 +1332,7 @@ $(document).ready(function(){
 		scrollToSection();
 	}
 	scrollToForm();
-	showFormSearch();
+	toggleFormSearch();
 	contactsMap();
 	contactsSwitcher();
 

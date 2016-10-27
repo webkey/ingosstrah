@@ -108,7 +108,9 @@
 /*main navigation end*/
 
 /*user*/
-.user{ }
+.user{
+	width: 237px;
+}
 
 /*search form*/
 .search-form-opened .search-form {
@@ -178,6 +180,9 @@
 /*common slider end*/
 
 /*visual*/
+.visual__holder{
+	padding: 42px 70px 10px 40px;
+}
 /*visual end*/
 
 /*graphs*/

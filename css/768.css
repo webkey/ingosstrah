@@ -110,7 +110,9 @@
 /*main navigation end*/
 
 /*user*/
-.user{ }
+.user{
+	width: 80px;
+}
 
 /*search form*/
 .header .show-search{
@@ -155,8 +157,10 @@
 
 /*common slider*/
 .visual__text {
-	font-size: 32px;
+	font-size: 28px;
 	line-height: 40px;
+	margin-bottom: 30px;
+	min-height: 120px;
 }
 /*common slider end*/
 
