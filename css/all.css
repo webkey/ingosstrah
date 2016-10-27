@@ -2256,17 +2256,60 @@ label,
 .depict-lock{
 	position: relative;
 	display: inline-block;
-	background: url(../img/depict-lock.png) no-repeat 0 50%;
-	-webkit-background-size: 10px 12px;
-	background-size: 10px 12px;
-	width: 20px;
-	height: 12px;
+	background: url(../img/depict-lock-lg.png) no-repeat -99px 0;
+	-webkit-background-size: 10px;
+	background-size: 10px;
+	width: 10px;
+	height: 17px;
 	box-sizing: border-box;
 }
-.login .depict-lock{
+.depict-lock:before,
+.depict-lock:after{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background: inherit;
+	-webkit-background-size: inherit;
+	background-size: inherit;
+	-webkit-transition-property: opacity;
+	transition-property: opacity;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+}
+.depict-lock:before{
+	background-position: 0 -40px;
+}
+
+.depict-lock:after{
+	background-position: 0 -19px;
+	opacity: 0;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+
+.login .depict-lock,
+.btn-frame-icon .depict-lock{
+	position: relative;
 	vertical-align: middle;
 	margin-right: -20px;
+	margin-top: -4px;
+	left: auto;
+	top: auto;
 	right: 20px;
+	width: 20px;
+}
+.desktop a:hover .depict-lock:before{
+	opacity: 0;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+.desktop a:hover .depict-lock:after{
+	opacity: 100;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
 }
 .login span{
 	vertical-align: middle;
@@ -4130,6 +4173,7 @@ a.aside-widget__inner{
 	width: 200px;
 	max-width: 100%;
 }
+.footer-adr__add{ padding: 0 0 20px; }
 /*footer adr end*/
 /*footer common end*/
 

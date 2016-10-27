@@ -138,14 +138,19 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin: -10px 0 0 -9px;
+	margin: -14px 0 0 -9px;
 	vertical-align: top;
-	background: url(../img/depict-lock-lg.png) 0 0;
-	-webkit-background-size: auto;
-	background-size: auto;
+	-webkit-background-size: 17px;
+	background-size: 17px;
 	width: 17px;
-	height: 20px;
+	height: 28px;
 	right: auto;
+}
+.login .depict-lock:before{
+	background-position: 0 0;
+}
+.login .depict-lock:after{
+	background-position: 0 -72px;
 }
 /*user end*/
 

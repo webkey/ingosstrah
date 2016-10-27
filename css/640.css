@@ -113,6 +113,8 @@ h3 {
 /*download files items*/
 .files {
 	padding: 0 0 20px;
+	margin-left: 0;
+	margin-righn: 0;
 }
 .files .files-item {
 	display: block;
