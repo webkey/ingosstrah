@@ -1,7 +1,6 @@
 @import url(fonts.css);
 @import url(normalize.css);
 @import url(buttons.css);
-@import url(sp.css);
 @import url(widgets.css);
 
 /*fonts*/
@@ -2814,15 +2813,14 @@ label,
 	width: 121px;
 	height: 121px;
 }
-.graph-count{
-	font-size: 14px;
+.graph-count {
 	line-height: 38px;
 	color: #124989;
-	padding-top: 28px;
+	padding: 36px 15px 0;
 }
-.graph-count .large-text{
+.graph-count .large-text {
 	font-family: 'helvetica-neue-cyr-thin', sans-serif;
-	font-size: 28px;
+	font-size: 34px;
 	position: relative;
 	top: 5px;
 }
