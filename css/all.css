@@ -4234,6 +4234,7 @@ a.aside-widget__inner{
 	text-align: justify;
 	overflow: hidden;
 	cursor: default;
+	padding: 24px 0;
 	box-sizing: border-box;
 
 	font-size: 1px;
