@@ -4045,6 +4045,12 @@ ol + .article-images{
 .contacts-add table{
 	min-width: 640px;
 }
+.contacts-add .table_auto{
+	max-height: none;
+}
+.contacts-add .table-zoom-btn{
+	display: none;
+}
 
 /*contacts info end*/
 /*CONTENT end*/
