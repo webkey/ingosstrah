@@ -162,7 +162,8 @@ input[type="file"] {
 	content: '';
 	position: absolute;
 	top: 0;
-	bottom: -6999px;
+	/*bottom: -6999px;*/
+	bottom: 0;
 }
 .wrapper > .max-wrap:before{
 	left: 0;
@@ -6722,7 +6723,7 @@ a.faq-q.active:after {
 	height: 40px;
 	background: #124989;
 	color: #fff;
-	z-index: 5;
+	z-index: 3;
 	cursor: pointer;
 	transition: .15s;
 }
