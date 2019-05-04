@@ -110,6 +110,7 @@
 /*user*/
 .user{
 	width: 237px;
+	display: none;
 }
 
 /*search form*/

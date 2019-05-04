@@ -1664,7 +1664,7 @@ yearsList = function() {
 		});
 	}
 
-}
+};
 
 function initAjaxForm(form_container_selector, form_result_message_selector){
 	var $form = $(form_container_selector + ' form'),
@@ -1693,6 +1693,820 @@ function initAjaxForm(form_container_selector, form_result_message_selector){
 			}
 		}
 	});
+}
+
+/**
+ * ! jquery.ms-tabs.js
+ * Version: 2019.1.2 (2019.05.04)
+ * Author: *
+ * Description: Switch panels
+ */
+
+(function ($) {
+	'use strict';
+
+	var MsTabs = function (element, config) {
+		var self,
+				$element = $(element),
+				$anchor = $element.find(config.anchor),
+				$panels = $element.find(config.panels),
+				$panel = $element.find(config.panel),
+				$select = $element.find(config.compactView.elem),
+				$selectDrop = $element.find(config.compactView.drop),
+				$html = $('html'),
+				isAnimated = false,
+				activeId,
+				isOpen = false,
+				isSelectOpen = false,
+				collapsible = $element.data('tabs-collapsible') || config.collapsible,
+				pref = 'ms-tabs',
+				pluginClasses = {
+					initialized: pref + '_initialized',
+					active: pref + '_active-tab',
+					collapsible: pref + '_is-collapsible',
+					selectOpen: pref + '_select-open'
+				},
+				mixedClasses = {
+					initialized: pluginClasses.initialized + ' ' + (config.modifiers.initClass || ''),
+					active: pluginClasses.active + ' ' + (config.modifiers.activeClass || ''),
+					collapsible: pluginClasses.collapsible + ' ' + (config.modifiers.collapsibleClass || ''),
+					selectOpen: pluginClasses.selectOpen + ' ' + (config.compactView.openClass || '')
+				};
+
+		var callbacks = function () {
+					/** track events */
+					$.each(config, function (key, value) {
+						if (typeof value === 'function') {
+							$element.on('msTabs.' + key, function (e, param) {
+								return value(e, $element, param);
+							});
+						}
+					});
+				},
+
+				prevent = function (event) {
+					event.preventDefault();
+					event.stopPropagation();
+					return false;
+				},
+
+				changeSelect = function () {
+					// Изменить контент селекта при изменении активного таба
+					$select.html($anchor.filter('[href="#' + activeId + '"]').html() + '<i>&#9660;</i>');
+					$element.trigger('msTabs.afterSelectValChange');
+				},
+
+				eventsSelect = function () {
+					// Открыть переключатели табов
+					$select.on('click', function () {
+						// $element.add($select).toggleClass(mixedClasses.selectOpen);
+						if (isSelectOpen) {
+							closeSelect();
+						} else {
+							openSelect();
+						}
+
+						prevent(event);
+					})
+				},
+
+				openSelect = function () {
+					isSelectOpen = true;
+					$element.add($select).add($selectDrop).addClass(mixedClasses.selectOpen);
+					$element.trigger('msTabs.afterSelectOpen');
+				},
+
+				closeSelect = function () {
+					isSelectOpen = false;
+					$element.add($select).add($selectDrop).removeClass(mixedClasses.selectOpen);
+					$element.trigger('msTabs.afterSelectClose');
+				},
+
+				closeSelectByClickOutside = function () {
+					$html.on('click', function (event) {
+						if (isSelectOpen && config.compactView.closeByClickOutside && !$(event.target).closest($selectDrop).length) {
+							closeSelect();
+						}
+					});
+				},
+
+				closeSelectByClickEsc = function () {
+					$html.keyup(function (event) {
+						if (isSelectOpen && config.compactView.closeByClickEsc && event.keyCode === 27) {
+							closeSelect();
+						}
+					});
+				},
+
+				show = function () {
+					// Определяем текущий таб
+					var $activePanel = $panel.filter('[id="' + activeId + '"]'),
+							$otherPanel = $panel.not('[id="' + activeId + '"]'),
+							$activeAnchor = $anchor.filter('[href="#' + activeId + '"]');
+
+					if (!isAnimated) {
+						// console.log('Показать таб:', activeId);
+						isAnimated = true;
+
+						// Удалить активный класс со всех элементов
+						$panel.add($anchor).removeClass(mixedClasses.active);
+
+						// Добавить класс на каждый активный элемент
+						$activePanel.add($activeAnchor).addClass(mixedClasses.active);
+
+						// Анимирование высоты табов
+						$panels
+								.css('overflow', 'hidden')
+								.animate({
+									'height': $activePanel.outerHeight()
+								}, config.animationSpeed);
+
+						// Скрыть все табы, кроме активного
+						hideTab($otherPanel);
+
+						// Показать активный таб
+						$activePanel
+								.css({
+									'z-index': 2,
+									'visibility': 'visible'
+								})
+								.animate({
+									'opacity': 1
+								}, config.animationSpeed, function () {
+									$activePanel
+											.css({
+												'position': 'relative',
+												'left': 'auto',
+												'top': 'auto',
+												'pointer-events': ''
+											});
+									// .attr('tabindex', 0);
+
+									$panels.css({
+										'height': '',
+										'overflow': ''
+									});
+
+									// Анимация полностью завершена
+									isOpen = true;
+									isAnimated = false;
+								});
+					}
+
+					// callback after showed tab
+					$element.trigger('msTabs.afterOpen');
+					$element.trigger('msTabs.afterChange');
+				},
+
+				hide = function () {
+					// Определить текущий таб
+					var $activePanel = $panel.filter('[id="' + activeId + '"]');
+
+					if (!isAnimated) {
+						// console.log("Скрыть таб: ", activeId);
+
+						isAnimated = true;
+
+						// Удалить активный класс со всех элементов
+						$panel.add($anchor).removeClass(mixedClasses.active);
+
+						// Анимирование высоты табов
+						$panels
+								.css('overflow', 'hidden')
+								.animate({
+									'height': 0
+								}, config.animationSpeed);
+
+						hideTab($activePanel, function () {
+							$panels.css({
+								'height': ''
+							});
+
+							isOpen = false;
+							isAnimated = false;
+						});
+					}
+
+					// callback after tab hidden
+					$element.trigger('msTabs.afterClose');
+					$element.trigger('msTabs.afterChange');
+				},
+
+				hideTab = function ($_panel) {
+					var callback = arguments[1];
+					$_panel
+							.css({
+								'z-index': -1
+							})
+							// .attr('tabindex', -1)
+							.animate({
+								'opacity': 0
+							}, config.animationSpeed, function () {
+								$_panel.css({
+									'position': 'absolute',
+									'left': 0,
+									'top': 0,
+									'visibility': 'hidden',
+									'pointer-events': 'none'
+								});
+
+								// Анимация полностью завершена
+								if (typeof callback === "function") {
+									callback();
+								}
+							});
+				},
+
+				events = function () {
+					$anchor.on('click', function (event) {
+						event.preventDefault();
+
+						var curId = $(this).attr('href').substring(1);
+						// console.log("Таб анимируется?: ", isAnimated);
+						// console.log("Текущий таб открыт?: ", isOpen);
+						// console.log("Таб нужно закрывать, если открыт?: ", collapsible);
+						// console.log("activeId (Предыдущий): ", activeId);
+
+						if (isAnimated || !collapsible && curId === activeId) {
+							return false;
+						}
+
+						if (collapsible && isOpen && curId === activeId) {
+							hide();
+						} else {
+							activeId = curId;
+							// console.log("activeId (Текущий): ", activeId);
+							show();
+						}
+
+						// Изменить контент селекта
+						if (config.compactView) {
+							changeSelect();
+							closeSelect();
+						}
+					});
+				},
+
+				init = function () {
+
+					$anchor.filter('.' + pluginClasses.active).addClass(mixedClasses.active);
+					$anchor.filter('.' + config.modifiers.activeClass).addClass(mixedClasses.active);
+
+					$panels.css({
+						'display': 'block',
+						'position': 'relative'
+					});
+
+					$panel
+							.css({
+								'position': 'absolute',
+								'left': 0,
+								'top': 0,
+								'opacity': 0,
+								'width': '100%',
+								'visibility': 'hidden',
+								'z-index': -1,
+								'pointer-events': 'none'
+							});
+					// .attr('tabindex', -1);
+
+					// console.log("config.activeIndex === 0 || config.activeIndex: ", config.activeIndex === 0 || config.activeIndex);
+
+					if ($anchor.filter('.' + pluginClasses.active).length) {
+						activeId = $anchor.filter('.' + pluginClasses.active).attr('href').substring(1);
+					} else if (config.activeIndex === 0 || config.activeIndex) {
+						activeId = $anchor.eq(config.activeIndex).attr('href').substring(1);
+					}
+
+					// console.log("activeId (сразу после инициализации): ", activeId);
+
+					if (activeId) {
+						var $activeAnchor = $anchor.filter('[href="#' + activeId + '"]'),
+								$activePanel = $panel.filter('[id="' + activeId + '"]');
+
+						// Добавить класс на каждый активный элемент
+						$activePanel.add($activeAnchor).addClass(mixedClasses.active);
+
+						// Показать активный таб
+						$activePanel
+								.css({
+									'position': 'relative',
+									'left': 'auto',
+									'top': 'auto',
+									'opacity': 1,
+									'visibility': 'visible',
+									'z-index': 2,
+									'pointer-events': ''
+								});
+						// .attr('tabindex', 0);
+
+						isOpen = true;
+					}
+
+					// Изменить контент селекта
+					if (config.compactView.elem) {
+						changeSelect();
+						// !Предупреждение, если не задан элемент, котрый будет выполнять роль опшинов
+						if (!config.compactView.drop) {
+							console.warn('You must choose a DOM element as select drop! Pun in a compactView.drop');
+						}
+					}
+
+					// Добавить специальный класс, если включена возможность
+					// разворачивать/сворачивать активный таб
+					if (collapsible) {
+						$element.addClass(mixedClasses.collapsible);
+					}
+
+					// После инициализации плагина добавить внутренний класс и,
+					// если указан в опициях, пользовательский класс
+					$element.addClass(mixedClasses.initialized);
+
+					$element.trigger('msTabs.afterInit');
+				};
+
+		self = {
+			callbacks: callbacks,
+			eventsSelect: eventsSelect,
+			closeSelectByClickOutside: closeSelectByClickOutside,
+			closeSelectByClickEsc: closeSelectByClickEsc,
+			events: events,
+			init: init
+		};
+
+		return self;
+	};
+
+	$.fn.msTabs = function () {
+		var _ = this,
+				opt = arguments[0],
+				args = Array.prototype.slice.call(arguments, 1),
+				l = _.length,
+				i,
+				ret;
+		for (i = 0; i < l; i++) {
+			if (typeof opt === 'object' || typeof opt === 'undefined') {
+				_[i].msTabs = new MsTabs(_[i], $.extend(true, {}, $.fn.msTabs.defaultOptions, opt));
+				_[i].msTabs.init();
+				_[i].msTabs.callbacks();
+				_[i].msTabs.eventsSelect();
+				_[i].msTabs.closeSelectByClickOutside();
+				_[i].msTabs.closeSelectByClickEsc();
+				_[i].msTabs.events();
+			} else {
+				ret = _[i].msTabs[opt].apply(_[i].msTabs, args);
+			}
+			if (typeof ret !== 'undefined') {
+				return ret;
+			}
+		}
+		return _;
+	};
+
+	$.fn.msTabs.defaultOptions = {
+		anchor: '.tabs__anchor-js',
+		panels: '.tabs__panels-js',
+		panel: '.tabs__panel-js',
+		animationSpeed: 300,
+		activeIndex: 0,
+		collapsible: false,
+		compactView: {
+			elem: null,
+			drop: null,
+			closeByClickOutside: true,
+			closeByClickEsc: true,
+			openClass: null
+		},
+		modifiers: {
+			initClass: null,
+			collapsibleClass: null,
+			activeClass: null
+		}
+	};
+
+})(jQuery);
+
+/**
+ * Tabs
+ */
+function tabsCustomInit () {
+	var $tabs = $('.tabs-js'),
+			$tabsPanels = $('.tabs__panels-js');
+
+	if ($tabs.length) {
+		$tabs.msTabs({
+			anchor: $('.tabs__thumbs-js').find('a'),
+			panels: $tabsPanels,
+			panel: $tabsPanels.children(),
+			modifiers: {
+				activeClass: 'tabs-active'
+			},
+			compactView: {
+				elem: '.tabs__select-js',
+				drop: '.tabs__select-drop-js',
+				arrowTpl: '<i><svg width="10" height="6" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg"><path d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L5 3.58579L8.29289 0.292893C8.68342 -0.0976311 9.31658 -0.0976311 9.70711 0.292893C10.0976 0.683417 10.0976 1.31658 9.70711 1.70711L5.70711 5.70711C5.31658 6.09763 4.68342 6.09763 4.29289 5.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"></path></svg></i>',
+				openClass: 'tabs-select-open'
+			}
+		});
+	}
+}
+
+/**
+ * ! jquery.ms-rolls.js
+ * Version: 2019.1.1
+ * Author: Astronim*
+ * Description: Rolls
+ */
+
+(function ($) {
+	'use strict';
+
+	var MsRolls = function (element, config) {
+		var self,
+				$element = $(element),
+				$panel = $(config.panel, $element),
+				$panelWrap = $('.rolls__panel-wrap-js', $element),
+				isAnimated = false,
+				pref = 'ms-rolls',
+				pluginClasses = {
+					initClass: pref + '_initialized'
+				},
+				focusElements = 'input, a, [tabindex], area, select, textarea, button, [contentEditable=true]' + config.switcher,
+				positionPanelStyle = {
+					position: 'absolute',
+					left: 0,
+					top: 0,
+					width: '100%'
+				},
+				destroyPositionPanelStyle = {
+					position: '',
+					left: '',
+					top: '',
+					width: ''
+				},
+				showPanelStyles = {
+					opacity: '',
+					'user-select': '',
+					'pointer-event': '',
+					'z-index': ''
+				},
+				hidePanelStyles = {
+					opacity: 0,
+					'user-select': 'none',
+					'pointer-event': 'none',
+					'z-index': -1
+				};
+
+		var dataCollapsed = $element.attr('data-rolls-collapsed');
+		var collapsed = (dataCollapsed === "true" || dataCollapsed === "false") ? dataCollapsed === "true" : config.collapsed;
+
+		var callbacks = function () {
+					/** track events */
+					$.each(config, function (key, value) {
+						if (typeof value === 'function') {
+							$element.on('msRolls.' + key, function (e, param) {
+								return value(e, $element, param);
+							});
+						}
+					});
+				},
+				tabindexOn = function (_element) {
+					// Все элементы _element поставить в фокус-очередь
+					_element.attr('tabindex', '0');
+				},
+				tabindexOff = function (_element) {
+					// Все элементы _element убрать с фокус-очереди
+					_element.attr('tabindex', '-1');
+				},
+				open = function ($_panel) {
+					// Если входящей Панели не существует, выполнение функции прекращается
+					if (!$_panel.length) {
+						return false;
+					}
+
+					//
+					var $activePanelWrap = $_panel.parent(), // Ближайшая родительская обертка активной Панели
+							$activeParentsPanels = $_panel.parentsUntil(element, config.panel), // Все родительские Панели активной Панели
+							$otherActivePanelsWrap = $activeParentsPanels.parent(), // Все родительские Обертка активной Панели не включая ближайшую
+							$otherActiveHeader = $otherActivePanelsWrap.prev(config.header), // Все родительские Обертка активной Панели не включая ближайшую
+							$otherActiveParentsItems = $activeParentsPanels.parentsUntil(element, config.item); // Все родительские Элементы активной Панели
+
+					// 1) Открыть все родительские Панели (без анимации)
+					// Добавить класс на активные родительские (не ближайшие) элементы
+					$activeParentsPanels
+							.add($otherActiveParentsItems)
+							.add($otherActiveHeader)
+							.add($(config.switcher, $otherActiveHeader))
+							.addClass(config.modifiers.activeClass);
+
+					// Открывать родительские Панели необходимо, если, например, открывается вложенная Панель методом "open"
+					$activeParentsPanels
+							.css($.extend(destroyPositionPanelStyle, showPanelStyles))
+							.data('active', true).attr('data-active', true); // Указать в data-атрибуте, что Панель открыта;
+
+					// 2) Открыть текущую панель (с анимацией)
+					$element.trigger('msRolls.beforeOpen');// Вызов события перед открытием текущей панели
+
+					var $activeItems = $_panel.closest(config.item), // Родительский Элемент активной Панели
+							$activeHeader = $activePanelWrap.prev(config.header); // Шапка активной Панели
+
+					// Добавить класс на активные элементы
+					$_panel.add($activeItems).add($activeHeader).add($(config.switcher, $activeHeader)).addClass(config.modifiers.activeClass);
+
+					var callback = arguments[1];
+
+					$_panel.css(showPanelStyles); // Панель делаем видимой до начала анимации
+
+					changeHeight($activePanelWrap, $_panel.outerHeight(), function () {
+						$_panel
+								.css(destroyPositionPanelStyle)
+								.data('active', true).attr('data-active', true); // Указать в data-атрибуте, что Панель открыта
+
+						$activePanelWrap.css({
+							position: '',
+							overflow: '',
+							'height': ''
+						});
+
+						if (config.accessibility) {
+							// Поставить в фокус-очередь все элементы с фокусировкой внутри активной Панели
+							tabindexOn($(focusElements, $_panel));
+
+							// В неактивных Панелях все элементы с фокусировкой убрать с фокус-очереди
+							tabindexOff($(focusElements, $_panel.find(config.panel).filter(function () {
+								return !$(this).data('active');
+							})));
+						}
+
+						// Вызов события после открытия текущей панели
+						$element.trigger('msRolls.afterOpen');
+
+						// Вызов callback функции после открытия панели
+						if (typeof callback === "function") {
+							callback();
+						}
+					});
+
+					if (collapsed) {
+						// Проверить у соседей всех родительских Элементов наличие активных Панелей
+						// Закрыть эти Панели
+						var $siblingsPanel = $_panel.parentsUntil($element, config.item).siblings().find(config.panel).filter(function () {
+							return $(this).data('active');
+						});
+
+						closePanel($siblingsPanel, function () {
+							isAnimated = false; // Анимация завершена
+						});
+					}
+				},
+				close = function ($_panel) {
+					if (!$_panel.length) {
+						return false;
+					}
+					// Закрыть отдельно все вложенные активные панели,
+					// И отдельно текущую панель.
+					// Это сделано с целью определения события закрытия текущей панели отдельно.
+
+					if (collapsed) {
+						// Закрыть активные панели внутри текущей
+						var $childrenOpenedPanel = $(config.panel, $_panel).filter(function () {
+							return $(this).data('active');
+						});
+
+						closePanel($childrenOpenedPanel);
+					}
+
+					// Закрыть текущую панель
+					$element.trigger('msRolls.beforeClose'); // Вызов события перед закрытием текущей панели
+					var callback = arguments[1];
+
+					closePanel($_panel, function () {
+						$element.trigger('msRolls.afterClose'); // Вызов события после закрытия текущей панели
+
+						// Вызов callback функции после закрытия панели
+						if (typeof callback === "function") {
+							callback();
+						}
+					});
+				},
+				closePanel = function ($_panel) {
+					if (!$_panel.length) {
+						return false;
+					}
+
+					var callback = arguments[1],
+							$curPanelWrap = $_panel.parent(); // родительская обертка активной Панели
+
+					var $curItems = $_panel.closest(config.item), // родительский Элемент активной Панели
+							$curHeader = $curPanelWrap.prev(config.header); // Шапка активной Панели
+
+					// Удалить активный класс со всех элементов
+					$_panel.add($curItems).add($curHeader).add($(config.switcher, $curHeader)).removeClass(config.modifiers.activeClass);
+
+					// Закрыть панель
+					changeHeight($curPanelWrap, 0, function () {
+						$_panel
+								.css(positionPanelStyle)
+								.css(hidePanelStyles)
+								.data('active', false).attr('data-active', false); // Указать в data-атрибуте, что панель закрыта
+
+						$curPanelWrap.css('height', '');
+
+						// Web accessibility
+						if (config.accessibility) {
+							// Убрать с фокус-очереди все элементы с фокусировкой внутри текущей Панели
+							tabindexOff($(focusElements, $_panel));
+						}
+
+						// Вызов callback функции после закрытия панели
+						if (typeof callback === "function") {
+							callback();
+						}
+					});
+				},
+				changeHeight = function ($_wrap, _val) {
+					var callback = arguments[2];
+
+					$_wrap.css({
+						position: 'relative',
+						overflow: 'hidden'
+					}).animate({
+						'height': _val
+					}, config.animationSpeed, function () {
+
+						if (typeof callback === "function") {
+							callback();
+						}
+
+						isAnimated = false;
+					});
+				},
+				events = function () {
+					$(config.switcher, $element).on(config.event, function (event) {
+						// Если панель во время клика находится в процессе анимации, то выполнение функции прекратится
+
+						if (isAnimated) {
+							event.preventDefault();
+							return false;
+						}
+
+						var $currentSwitcher = $(this);
+
+						// Если текущий пункт не содержит панелей,
+						// то выполнение функции прекратится
+						if (!$currentSwitcher.closest(config.item).has(config.panel).length) {
+							return false;
+						}
+
+						// Начало анимирования панели
+						// Включить флаг анимации
+						isAnimated = true;
+
+						event.preventDefault();
+
+						// Определение текущей панели
+						var $currentPanel = $currentSwitcher.closest(config.header).next().children(config.panel);
+
+						// Проверка на наличише активного дата-атрибута
+						if ($currentPanel.data('active')) {
+							// Закрыть текущую панель
+							close($currentPanel, function () {
+								isAnimated = false; // Анимация завершина
+							});
+						} else {
+							// Открыть текущую панель
+
+							open($currentPanel, function () {
+								isAnimated = false; // Анимация завершина
+							});
+						}
+					});
+				},
+				init = function () {
+					$panelWrap.css({
+						position: 'relative',
+						overflow: 'hidden'
+					});
+
+					$panel
+							.css(positionPanelStyle)
+							.css(hidePanelStyles);
+
+					var $activePanel = $panel.filter('.' + config.modifiers.activeClass);
+
+					// Определить в переменных все элементы, на которые нужно добавить активный класс
+					var $activeItems = $activePanel.parents(config.item), // Все родительские Элементы активной Панели
+							$parentPanels = $activePanel.parents(config.panel), // Все родительские Панели
+							$allActivePanels = $activePanel.add($parentPanels), // Все активные Панели, включая текущую и родительские
+							$activeHeaders = $activePanel.parents($allActivePanels).prev(), // Все Шапки родительских Элементов
+							$activeSwitcher = $(config.switcher, $activeHeaders), // Все Шапки родительских Элементов
+							$parentPanelsWrap = $activePanel.parents($panelWrap); // Все вспомогательные обертки родительских Панелей
+
+					// Добавить класс на активные элементы
+					$allActivePanels
+							.add($activeItems)
+							.add($activeHeaders)
+							.add($activeSwitcher)
+							.addClass(config.modifiers.activeClass);
+
+					// Открыть активные панели
+					$allActivePanels.css($.extend(destroyPositionPanelStyle, showPanelStyles));
+
+					// На активные панели установить дата-атрибут active сo заначением true
+					$allActivePanels.data('active', true).attr('data-active', true);
+
+					// Очистить стили вспомогательных оберток активных Панелей
+					$parentPanelsWrap.css({
+						position: '',
+						overflow: ''
+					});
+
+					// Web accessibility
+					if (config.accessibility) {
+						// Переключатель поставить в фокус-очередь
+						tabindexOn($(config.switcher, $element));
+						// Все элементы с фокусировкой внутри панелей убрать с фокус-очереди
+						tabindexOff($(focusElements, $panel));
+						// Все элементы с фокусировкой внутри активных панелей поставить в фокус-очередь
+						tabindexOn($(focusElements, $parentPanels));
+					}
+
+					$element.addClass(pluginClasses.initClass);
+					$element.trigger('msRolls.afterInit');
+				};
+
+		self = {
+			callbacks: callbacks,
+			open: open,
+			close: close,
+			events: events,
+			init: init
+		};
+
+		return self;
+	};
+
+	$.fn.msRolls = function () {
+		var _ = this,
+				opt = arguments[0],
+				args = Array.prototype.slice.call(arguments, 1),
+				l = _.length,
+				i,
+				ret;
+		for (i = 0; i < l; i++) {
+			if (typeof opt === 'object' || typeof opt === 'undefined') {
+				_[i].msRolls = new MsRolls(_[i], $.extend(true, {}, $.fn.msRolls.defaultOptions, opt));
+				_[i].msRolls.callbacks();
+				_[i].msRolls.init();
+				_[i].msRolls.events();
+			} else {
+				ret = _[i].msRolls[opt].apply(_[i].msRolls, args);
+			}
+			if (typeof ret !== 'undefined') {
+				return ret;
+			}
+		}
+		return _;
+	};
+
+	$.fn.msRolls.defaultOptions = {
+		item: '.rolls__item-js', // Общий ближайший родитель (Элемент) для переключателя и разворачивающейся панели (Далее Панель)
+		header: '.rolls__header-js', // Обертка для переключателя (Шапка)
+		switcher: '.rolls__switcher-js', // Переключатель состояния панели, которая относится к этому переключателю
+		panel: '.rolls__panel-js', // Панель
+		event: 'click', // Событие, которое разворачивает/сворачивает Панель
+		animationSpeed: 300, // Скорость анимации Панели
+		collapsed: true, // Параметр, указывающий на необходимось сворачивать ранее открытые Панели
+		accessibility: false, // Опримизировать переключение фокуса по табу (снижает скорость выполнения скрипта)
+		modifiers: {
+			activeClass: 'rolls-active' // Класс, который добавляется, на активный элементы
+		}
+	};
+
+})(jQuery);
+
+/**
+ * Rolls
+ */
+function rollsInit () {
+	var $rolls = $('.rolls-js');
+
+	if ($rolls.length) {
+		$rolls.msRolls({
+			accessibility: true,
+			afterOpen: function () {
+				recalcSticky();
+			},
+			afterClose: function () {
+				recalcSticky();
+			}
+		})
+	}
+
+	function recalcSticky() {
+		$(".sidebar").trigger("sticky_kit:recalc");
+		$(".aside").trigger("sticky_kit:recalc");
+	}
 }
 
 $(window).load(function () {
@@ -1759,6 +2573,8 @@ $(document).ready(function(){
 	accordion();
 	tabWrapper();
 	yearsList();
+	tabsCustomInit();
+	rollsInit();
 
 	// initFormElements();
 
@@ -3451,6 +4267,3 @@ function includeCheckboxInit() {
 		check();
 	});
 };
-
-
-
