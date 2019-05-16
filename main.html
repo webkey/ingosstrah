@@ -14,7 +14,7 @@
 	<link href="favicon.ico" rel="shortcut icon">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<!--Main style-->
-	<link href="css/all.css" rel="stylesheet" media="all">
+	<link href="css/all.css?16051722" rel="stylesheet" media="all">
 	<link href="css/flexboxgrid.min.css" rel="stylesheet" media="all">
 	<!--Media queries style-->
 	<link href="css/mq-all.css" rel="stylesheet" media="screen">
@@ -162,8 +162,13 @@
 													<li>от несчастного случая</li>
 													<li>спортивных рисков</li>
 												</ul>
-												<div class="card__meta">
-													<a href="#" class="btn-default">Купить онлайн</a>
+												<div class="card__buttons">
+													<div class="card__buttons-item">
+                            <a href="#" class="btn-alt card-btn">Подробнее</a>
+													</div>
+													<div class="card__buttons-item">
+														<a href="#" class="btn-default card-btn">Купить онлайн</a>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -178,8 +183,13 @@
 													<li>от несчастного случая</li>
 													<li>хищение или утрата документов</li>
 												</ul>
-												<div class="card__meta">
-													<a href="#" class="btn-default">Купить онлайн</a>
+												<div class="card__buttons">
+													<div class="card__buttons-item">
+                            <a href="#" class="btn-alt card-btn">Подробнее</a>
+													</div>
+													<div class="card__buttons-item">
+														<a href="#" class="btn-default card-btn">Купить онлайн</a>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -195,8 +205,13 @@
 													<li>гибель имущества, вызов в суд</li>
 													<li>хищение или утрата документов</li>
 												</ul>
-												<div class="card__meta">
-													<a href="#" class="btn-default">Купить онлайн</a>
+												<div class="card__buttons">
+													<div class="card__buttons-item">
+														<a href="#" class="btn-alt card-btn">Подробнее</a>
+													</div>
+													<div class="card__buttons-item">
+														<a href="#" class="btn-default card-btn">Купить онлайн</a>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -210,7 +225,8 @@
 								<div class="stairs__col">
                   <div class="stair stairs__item">
                     <div class="stair__icon">
-                      <img src="img/stair-calc.svg" alt="image description" />
+											<i class="icon-calc"></i>
+                      <!--<img src="img/stair-calc.svg" alt="image description" />-->
                     </div>
                     <h3 class="stair__title">Рассчитайте онлайн</h3>
                   </div>
@@ -223,7 +239,8 @@
 								<div class="stairs__col">
                   <div class="stair stairs__item">
                     <div class="stair__icon">
-                      <img src="img/stair-pay.svg" alt="image description" />
+											<i class="icon-pay"></i>
+                      <!--<img src="img/stair-pay.svg" alt="image description" />-->
                     </div>
                     <h3 class="stair__title">Оплатите</h3>
                   </div>
@@ -236,7 +253,8 @@
 								<div class="stairs__col">
                   <div class="stair stairs__item">
                     <div class="stair__icon">
-                      <img src="img/stair-doc.svg" alt="image description" />
+											<i class="icon-order"></i>
+                      <!--<img src="img/stair-doc.svg" alt="image description" />-->
                     </div>
                     <h3 class="stair__title">Получите договор на&nbsp;е&nbsp;-&nbsp;mail</h3>
                   </div>
@@ -244,21 +262,50 @@
 							</div>
 						</section>
             <section class="m-section m-section-space">
-              <div class="max-wrap-md">
-                <h2>Как еще можно оформить договор путешественника</h2>
-                <ul>
-                  <li><a href="#">Онлайн на сайте</a></li>
-                  <li><a href="#">Через агента</a></li>
-                  <li><a href="#">В офисе компании</a></li>
-                </ul>
-              </div>
-            </section>
+							<div class="max-wrap-md">
+								<h2>Способы оформления договора</h2>
+							</div>
+							<div class="cards">
+								<div class="flex-row">
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+										<div class="cards__item">
+											<a href="#" class="cell">
+												<div class="h3 cell__title">Онлайн на сайте</div>
+												<div class="cell__footer">
+													<div class="cell__btn">Оформить</div>
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+										<div class="cards__item">
+											<a href="#" class="cell">
+												<div class="h3 cell__title">Через агента</div>
+												<div class="cell__footer">
+													<div class="cell__btn">Оформить</div>
+												</div>
+											</a>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+										<div class="cards__item">
+											<a href="#" class="cell">
+												<div class="h3 cell__title">В офисе компании</div>
+												<div class="cell__footer">
+													<div class="cell__btn">Оформить</div>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
             <section class="m-section m-section-space">
 							<div class="max-wrap-md">
 								<h2>На что обратить внимание при выборе договора путешественника?</h2>
 							</div>
-              <div class="table_auto has-bg">
-                <table>
+              <div class="table-auto has-bg">
+                <table class="table-alt">
                   <thead>
                     <tr>
                       <th>Вариант страхования</th>
@@ -309,7 +356,7 @@
               </div>
             </section>
 
-            <section class="m-section m-section-space">
+            <!--<section class="m-section m-section-space">
 							<div class="max-wrap-md">
 								<h2>Пример использования табов</h2>
 							</div>
@@ -346,7 +393,142 @@
 									</div>
 								</div>
 							</div>
-            </section>
+            </section>-->
+
+
+						<section class="m-section m-section-space">
+							<div class="max-wrap-md">
+								<h2>Добровольное страхование квартиры </h2>
+							</div>
+							<div class="m-text">
+								<div class="max-wrap-md">
+									<p><strong>Добровольное страхование квартиры</strong> – это возможность застраховать ваше недвижимое и движимое, в том числе и ценное имущество. Страховой договор предусматривает денежную выплату на случай происшествия, которую вы сможете потратить на ремонт и восстановление своего жилья.</p>
+								</div>
+							</div>
+							<div class="cards">
+								<div class="flex-row">
+									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+										<div class="cards__item">
+											<div class="flip">
+												<div class="flip-frame">
+													<div class="flip-card flip-card_back">
+														<p>Стены, перегородки, полы, потолки, балконы и их ограждения, лоджии (без внутренней отделки)</p>
+													</div>
+													<div class="flip-card flip-card_front">
+														<div class="flip-card__title">Несущие конструкции</div>
+														<div class="flip-card__figure" style="background-image: url(img/img-flip-card-01.jpg);"></div>
+														<em class="flip-card__arr"></em>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+										<div class="cards__item">
+											<div class="flip">
+												<div class="flip-frame">
+													<div class="flip-card flip-card_back">
+														<p>Ванны, душевые кабины раковины, унитазы, сантехническая арматура к ним и т.п.</p>
+													</div>
+													<div class="flip-card flip-card_front">
+														<div class="flip-card__title">Стационарное инженерное оборудование</div>
+														<div class="flip-card__figure" style="background-image: url(img/img-flip-card-02.jpg);"></div>
+														<em class="flip-card__arr"></em>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+										<div class="cards__item">
+											<div class="flip">
+												<div class="flip-frame">
+													<div class="flip-card flip-card_back">
+														<p>Штукатурка, покраска, обои, облицовка плиткой, двери, паркет, ковролин и т.п, встроенные шкафы и т.п.</p>
+													</div>
+													<div class="flip-card flip-card_front">
+														<div class="flip-card__title">Несущие конструкции</div>
+														<div class="flip-card__figure" style="background-image: url(img/img-flip-card-03.jpg);"></div>
+														<em class="flip-card__arr"></em>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+										<div class="cards__item">
+											<div class="flip">
+												<div class="flip-frame">
+													<div class="flip-card flip-card_back">
+														<p>Аудио-видео-электро техника, мебель, музыкальные инструменты и т.п.</p>
+													</div>
+													<div class="flip-card flip-card_front">
+														<div class="flip-card__title">Движимое имущество</div>
+														<div class="flip-card__figure" style="background-image: url(img/img-flip-card-04.jpg);"></div>
+														<em class="flip-card__arr"></em>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section class="m-section m-section-space">
+							<div class="max-wrap-md">
+								<h2>Добровольное страхование квартиры </h2>
+							</div>
+							<div class="m-text">
+								<div class="max-wrap-md">
+									<p><strong>Добровольное страхование квартиры</strong> – это возможность застраховать ваше недвижимое и движимое, в том числе и ценное имущество. Страховой договор предусматривает денежную выплату на случай происшествия, которую вы сможете потратить на ремонт и восстановление своего жилья.</p>
+								</div>
+							</div>
+							<div class="m-rows">
+								<div class="m-rows__item">
+									<div class="m-feature">
+										<div class="m-feature__figure" style="background-image: url(img/img-flip-card-01.jpg);"></div>
+										<div class="m-feature__content">
+											<h3 class="m-feature__title">Несущие конструкции</h3>
+											<p>Стены, перегородки, полы, потолки, балконы и их ограждения, лоджии (без внутренней отделки)</p>
+											<div class="m-feature__footer">
+												<a href="#" class="btn-default">Подробнее</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="m-rows__item">
+									<div class="m-feature">
+										<div class="m-feature__figure" style="background-image: url(img/img-flip-card-02.jpg);"></div>
+										<div class="m-feature__content">
+											<h3 class="m-feature__title">Стационарное инженерное оборудование</h3>
+											<p>Ванны, душевые кабины раковины, унитазы, сантехническая арматура к ним и т.п.</p>
+											<div class="m-feature__footer">
+												<a href="#" class="btn-default">Подробнее</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section class="m-section m-section-space">
+							<div class="max-wrap-md">
+								<h2>Подробнее об индивидуальном страховании</h2>
+							</div>
+							<div class="m-text">
+								<div class="max-wrap-md">
+									<h3>Только при страховании на условиях индивидуального расчета возможно:</h3>
+									<ol>
+										<li>Включение в договор страхования дополнительного риска «Воздействия электротока»</li>
+										<li>Застраховать квартиру, где используется печное отопление или камин (исключение составляет электрокамин)</li>
+										<li>Снижение страховой премии при наличии системы видеонаблюдения, входной металлической двери</li>
+										<li>Применение бонуса, если Ваша квартира, находится в доме, срок введение в эксплуатацию(или дата последнего капитального ремонта) которого менее 30 лет</li>
+										<li>Гибкая система скидок при наличии действующих и/или одновременно заключающихся договор страхования.</li>
+									</ol>
+								</div>
+							</div>
+						</section>
 
 						<section class="m-section m-section-space">
 							<div class="max-wrap-md">
@@ -413,7 +595,14 @@
 														При страховании квартиры, если у Вас есть договор страхования КАСКО
 													</div>
 													<div class="flip-card flip-card_front">
-														10%
+														<div class="graph-progress" data-pct="10">
+															<svg class="svg" viewBox="0 0 126 126" version="1.1" xmlns="http://www.w3.org/2000/svg">
+																<circle class="circle-1" cx="63" cy="63" r="60"/>
+																<circle class="circle-2" cx="63" cy="63" r="60" stroke-dasharray="377" stroke-dashoffset="377"/>
+															</svg>
+															<div class="graph-count"><span class="large-text">0</span> <span>%</span></div>
+														</div>
+														<em class="flip-card__arr"></em>
 													</div>
 												</div>
 											</div>
@@ -427,7 +616,14 @@
 														Если у Вас уже есть действующий договор имущества граждан
 													</div>
 													<div class="flip-card flip-card_front">
-														20%
+														<div class="graph-progress" data-pct="20">
+															<svg class="svg" viewBox="0 0 126 126" version="1.1" xmlns="http://www.w3.org/2000/svg">
+																<circle class="circle-1" cx="63" cy="63" r="60"/>
+																<circle class="circle-2" cx="63" cy="63" r="60" stroke-dasharray="377" stroke-dashoffset="377"/>
+															</svg>
+															<div class="graph-count"><span class="large-text">0</span> <span>%</span></div>
+														</div>
+														<em class="flip-card__arr"></em>
 													</div>
 												</div>
 											</div>
@@ -441,7 +637,14 @@
 														При переходе из другой страховой компании
 													</div>
 													<div class="flip-card flip-card_front">
-														30%
+														<div class="graph-progress" data-pct="30">
+															<svg class="svg" viewBox="0 0 126 126" version="1.1" xmlns="http://www.w3.org/2000/svg">
+																<circle class="circle-1" cx="63" cy="63" r="60"/>
+																<circle class="circle-2" cx="63" cy="63" r="60" stroke-dasharray="377" stroke-dashoffset="377"/>
+															</svg>
+															<div class="graph-count"><span class="large-text">0</span> <span>%</span></div>
+														</div>
+														<em class="flip-card__arr"></em>
 													</div>
 												</div>
 											</div>
@@ -450,6 +653,12 @@
 								</div>
 							</div>
             </section>
+
+						<section class="m-section m-section-space">
+							<div class="max-wrap-md">
+								<a href="#" class="btn-default">Онлайн калькулятор</a>
+							</div>
+						</section>
 					</div>
 				</div>
 				<!--CONTENT end-->

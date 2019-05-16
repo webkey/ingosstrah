@@ -1,21 +1,5 @@
 @media only screen and (max-width: 639px){}
 
-/*------ TYPOGRAPHIC STYLES ------*/
-h1{
-	font-size: 28px;
-	line-height: 36px;
-	padding: 0 0 20px;
-}
-h2 {
-	font-size: 24px;
-	line-height: 32px;
-}
-h3 {
-	font-size: 22px;
-	line-height: 30px;
-}
-/*------ TYPOGRAPHIC STYLES end ------*/
-
 /*MAIN BLOCKS*/
 .sidebar{ width: 100%; }
 .sidebar:before{ width: 100%; }
@@ -334,14 +318,18 @@ h3 {
 	width: 100px;
 	height: 100px;
 }
+.graph-progress .svg {
+	width: 100px;
+	height: 100px;
+}
 .graph-count {
-	font-size: 13px;
-	padding-top: 28px;
+	font-size: 14px;
+	padding-top: 4px;
 	padding-left: 4px;
 	padding-right: 4px;
 }
 .graph-count .large-text {
-	font-size: 28px;
+	font-size: 24px;
 	top: 5px;
 }
 /*graphs end*/
