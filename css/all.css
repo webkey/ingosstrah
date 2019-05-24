@@ -8301,8 +8301,8 @@ ul.map-level-0 > li > a {
 
 /* r-meta */
 .r-meta {
-	font-size: 14px;
-	line-height: 18px;
+	font-size: 16px;
+	line-height: 20px;
 	color: #124989;
 }
 .r-meta__date {
@@ -8319,20 +8319,34 @@ ul.map-level-0 > li > a {
 /* r-body end*/
 
 /* review */
-.review {
-	padding: 30px 30px;
+.review__meta,
+.review__body {
+	margin-bottom: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
 }
 @media only screen and (max-width: 639px) {
-	.review {
-		padding: 20px 20px;
+	.review__meta,
+	.review__body {
+		margin-bottom: 10px;
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 }
-.review__meta {
-	margin-bottom: 20px;
+.review__meta:last-child,
+.review__body:last-child {
+	margin-bottom: 0;
+}
+
+.review__body {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	background-color: #f3f3f3;
 }
 @media only screen and (max-width: 639px) {
-	.review__meta {
-		margin-bottom: 10px;
+	.review__body {
+		padding-top: 10px;
+		padding-bottom: 10px;
 	}
 }
 /* review end */
@@ -8345,16 +8359,16 @@ ul.map-level-0 > li > a {
 	margin-bottom: 0;
 }
 .reviews__item {
-	margin: 0 -30px;
+	margin: 0 -30px 40px;
 }
 @media only screen and (max-width: 639px) {
 	.reviews__item {
-		margin: 0 -20px;
+		margin: 0 -20px 30px;
 	}
 }
-.reviews__item:nth-child(odd) {
+/*.reviews__item:nth-child(odd) {
 	background-color: #f3f3f3;
-}
+}*/
 /* reviews end */
 
 .space-bottom {

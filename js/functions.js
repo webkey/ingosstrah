@@ -2523,7 +2523,7 @@ $(window).load(function () {
 
 $(document).ready(function(){
 	placeholderInit();
-	// tabsInit();
+	tabsInit();
 	scroll2idInit();
 	if(DESKTOP){
 		customSelect($('select.cselect'));
