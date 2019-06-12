@@ -3621,9 +3621,28 @@ label,
 	vertical-align: middle;
 }
 
+.graph-count .graph-count-pref,
 .graph-count .large-text {
 	font-size: 34px;
 	font-family: 'helvetica-neue-cyr-thin', sans-serif;
+}
+
+.graph-title {
+	font-size: 18px;
+	font-family: 'helvetica-neue-cyr-roman', sans-serif;
+}
+.graph-progress .graph-title{
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	white-space: nowrap;
+	width: 240px;
+	margin-left: -120px;
+	margin-top: 10px;
+	text-align: center;
+}
+.graph-progress ~ .graph-title {
+	margin-top: 10px;
 }
 
 .graph-text {
@@ -7996,6 +8015,8 @@ flex: 1;
 	background-color: #fff;
 	display: -ms-flexbox;
 	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
 	-ms-flex-pack: center;
 	justify-content: center;
 	-ms-flex-align: center;
@@ -8021,8 +8042,10 @@ flex: 1;
 
 @media only screen and (max-width: 767px) {
 	.flip-card_front {
-		-ms-flex-align: start;
-		align-items: flex-start;
+		/*-ms-flex-align: start;*/
+		/*align-items: flex-start;*/
+		-ms-flex-pack: start;
+		justify-content: flex-start;
 	}
 }
 
